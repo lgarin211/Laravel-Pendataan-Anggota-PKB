@@ -40,4 +40,3 @@
     'browseOnZoneClick ': true,
    });
   </script>
-  

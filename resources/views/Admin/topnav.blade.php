@@ -8,7 +8,7 @@ $GENERAL=DB::table('GENERAL');
             <img src="{{url($GENERAL->where('Key_tag','Logo_IMG')->first()->Value1)}}" style="max-width: 120px;height: 130px;" alt="logo"/>
           </a>
           <a class="navbar-brand brand-logo-mini" href="{{url('Template1')}}/index.html">
-            <img src="{{url($GENERAL->where('Key_tag','Logo_IMG')->first()->Value2)}}" style="width: 100px;height: 100px;" alt="logo"/>
+            <img src="{{url($GENERAL->where('Key_tag','Logo_IMG')->first()->Value2)}}" style="width: 50px;height: 60px;" alt="logo"/>
           </a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">

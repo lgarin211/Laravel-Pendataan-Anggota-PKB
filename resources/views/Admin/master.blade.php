@@ -28,8 +28,8 @@
     <table class="table table-striped data-table table-responsive">
       <thead>
         <tr>
-          <th>nama</th>
           <th>NIK</th>
+          <th>nama</th>
           <th>Photo_Profile</th>
           <th>jenis_kelamin</th>
           <th>Alamat</th>
@@ -74,8 +74,8 @@
       select: true,
       ajax: "{{ route('anggota.index') }}",
       columns: [
-        {data: 'nama',name: 'nama',},
          {data: 'NIK', name: 'NIK'},
+         {data: 'nama',name: 'nama',},
          {data: 'jenis_kelamin', name: 'jenis_kelamin'},
          {data: 'Alamat', name: 'Alamat'},
          {data: 'Provinsi', name: 'Provinsi',"visible": false},
@@ -94,6 +94,5 @@
     });
   });
 </script>
-
-
+  @include('Admin.js')
 @endsection

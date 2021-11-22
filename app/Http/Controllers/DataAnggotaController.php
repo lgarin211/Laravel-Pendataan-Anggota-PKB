@@ -115,35 +115,34 @@ class DataAnggotaController extends Controller
         $filelainnya='doc/OTL/'.$idauth.'/'.$upname;
         $file->move($tujuan_upload,$upname);
 
-    $data=[
-      "nama" => $request->nama,
-      "NIK" => $request->NIK,
-      "jenis_kelamin" => $request->jenis_kelamin,
-      "Provinsi" => $request->Provinsi,
-      "Kabupaten" => $request->Kabupaten,
-      "Kecamatan" => $request->Kecamatan,
-      "Kelurahan" => $request->Kelurahan,
-      "RT" => $request->RT,
-      "RW" => $request->RW,
-      "Alamat" => $request->Alamat,
-      "email" => $request->email,
-      "No_Hape" => $request->No_Hape,
-      "Rekomendasi" => $request->Rekomendasi,
-      "Upload_Foto"=> $Upload_thumFoto,
-      "Upload_KTP"=>$Upload_thumKTP,
-      "Upload_Surat_Pernyataan"=>$Upload_Surat_Pernyataan,
-      "filelainnya"=>$filelainnya,
-      "user_id"=>$id,
-      'no_keanggotaan'=>strtotime("now")
-    ];
+        $data=[
+          "nama" => $request->nama,
+          "NIK" => $request->NIK,
+          "jenis_kelamin" => $request->jenis_kelamin,
+          "Provinsi" => $request->Provinsi,
+          "Kabupaten" => $request->Kabupaten,
+          "Kecamatan" => $request->Kecamatan,
+          "Kelurahan" => $request->Kelurahan,
+          "RT" => $request->RT,
+          "RW" => $request->RW,
+          "Alamat" => $request->Alamat,
+          "email" => $request->email,
+          "No_Hape" => $request->No_Hape,
+          "Rekomendasi" => $request->Rekomendasi,
+          "Upload_Foto"=> $Upload_thumFoto,
+          "Upload_KTP"=>$Upload_thumKTP,
+          "Upload_Surat_Pernyataan"=>$Upload_Surat_Pernyataan,
+          "filelainnya"=>$filelainnya,
+          "user_id"=>$id,
+          'no_keanggotaan'=>strtotime("now")
+        ];
 
         // dd($data);
         DB::table('data_anggotas')->insert($data);
-        return redirect('/dashboard');
-    
-}
+        return redirect('/dashboard');}
         return view('DataDiri/datadiri');
     }
+    
     public function cetak()
     {
         // $data=DB::table('data_anggotas')->where('user_id',auth()->user()->id)->get();
@@ -198,26 +197,25 @@ class DataAnggotaController extends Controller
         }   
         
     }
-
-
-
-
     public function Fbylok(Request $request)
     {
-
         if ($request->ajax()) {
+            if (!empty($_GET)) {
                 $bin=['Provinsi'=>$_GET['Provinsi'],'Kabupaten'=>$_GET['Kabupaten'],"Kecamatan"=>$_GET['Kecamatan'],"Kelurahan"=>$_GET['Kelurahan']];
-                if (!empty($bin)) {
-                    foreach ($bin as $key => $item) {
-                        if ($item=="" or $item=="true") {
-                        unset($bin[$key]);
+                    if (!empty($bin)) {
+                        foreach ($bin as $key => $item) {
+                            if ($item=="" or $item=="true") {
+                            unset($bin[$key]);
+                            }
                         }
                     }
+                $users = DB::table('data_anggotas');
+                foreach ($bin as $key => $item) {
+                    $users=$users->where($key, $item);
                 }
-            $users = DB::table('data_anggotas');
-            foreach ($bin as $key => $item) {
-                $users=$users->where($key, $item);
-            }
+                }else{
+                        $users = DB::table('data_anggotas');   
+                }
             $users=$users->get();
             $data = $users;
             return Datatables::of($data)
@@ -227,7 +225,7 @@ class DataAnggotaController extends Controller
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <a class="btn btn-success" href="/cetak?id='.$row->id.'">Cetak</a>
                             <a class="btn btn-success" href="/edit?id='.$row->id.'">Lihat Data</a>
-                            <a class="btn btn-success" href="/edit?dapil=true&id='.$row->id.'">Buat Dapil</a>
+                            <a class="btn btn-success" href="/edit?Dapil=true&id='.$row->id.'">Buat Dapil</a>
                         </div>';
                       return $btn;
                     })

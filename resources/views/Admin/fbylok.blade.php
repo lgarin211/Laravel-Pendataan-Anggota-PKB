@@ -137,8 +137,8 @@
 			<table class="table table-striped data-table table-responsive">
 			      <thead>
 			        <tr>
-			          <th>nama</th>
 			          <th>NIK</th>
+                <th>nama</th>
 			          <th>jenis_kelamin</th>
 			          <th>Alamat</th>
 			          <th>Provinsi</th>
@@ -177,8 +177,8 @@
       select: true,
       ajax: pas,
       columns: [
-        {data: 'nama',name: 'nama',},
          {data: 'NIK', name: 'NIK'},
+         {data: 'nama',name: 'nama',},
          {data: 'jenis_kelamin', name: 'jenis_kelamin'},
          {data: 'Alamat', name: 'Alamat'},
          {data: 'Provinsi', name: 'Provinsi',"visible": false},
@@ -198,4 +198,7 @@
     });
   });
   @endif
-</script> @endsection
+</script>
+  @include('Admin.js')
+ @endsection
+

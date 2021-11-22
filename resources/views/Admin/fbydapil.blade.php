@@ -137,8 +137,8 @@
 			<table class="table table-striped data-table table-responsive">
 			      <thead>
 			        <tr>
+                <th>NIK</th>
 			          <th>nama</th>
-			          <th>NIK</th>
 			          <th>jenis_kelamin</th>
 			          <th>Alamat</th>
 			          <th>Provinsi</th>
@@ -199,4 +199,5 @@
   });
   @endif
 </script> 
+@include('Admin.js')
 @endsection
