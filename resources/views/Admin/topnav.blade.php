@@ -15,7 +15,7 @@ $GENERAL=DB::table('GENERAL');
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
           </button>
-          <div class="search-field d-none d-md-block">
+          <!-- <div class="search-field d-none d-md-block">
             <form class="d-flex align-items-center h-100" action="#">
               <div class="input-group">
                 <div class="input-group-prepend bg-transparent">
@@ -24,7 +24,7 @@ $GENERAL=DB::table('GENERAL');
                 <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects">
               </div>
             </form>
-          </div>
+          </div> -->
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
@@ -49,12 +49,12 @@ $GENERAL=DB::table('GENERAL');
                 <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
               </a>
             </li>
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
               <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                 <i class="mdi mdi-email-outline"></i>
                 <span class="count-symbol bg-warning"></span>
               </a>
-{{--               <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+              {{--<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
                 <h6 class="p-3 mb-0">Messages</h6>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item preview-item">
@@ -89,8 +89,8 @@ $GENERAL=DB::table('GENERAL');
                 <div class="dropdown-divider"></div>
                 <h6 class="p-3 mb-0 text-center">4 new messages</h6>
               </div> --}}
-            </li>
-            <li class="nav-item dropdown">
+            </li> -->
+            <!-- <li class="nav-item dropdown">
               <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
                 <i class="mdi mdi-bell-outline"></i>
                 <span class="count-symbol bg-danger"></span>
@@ -136,17 +136,17 @@ $GENERAL=DB::table('GENERAL');
                 <div class="dropdown-divider"></div>
                 <h6 class="p-3 mb-0 text-center">See all notifications</h6>
               </div>
-            </li>
+            </li> -->
             <li class="nav-item nav-logout d-none d-lg-block">
               <a class="nav-link" href="#">
                 <i class="mdi mdi-power"></i>
               </a>
             </li>
-            <li class="nav-item nav-settings d-none d-lg-block">
+            <!-- <li class="nav-item nav-settings d-none d-lg-block">
               <a class="nav-link" href="#">
                 <i class="mdi mdi-format-line-spacing"></i>
               </a>
-            </li>
+            </li> -->
           </ul>
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>
