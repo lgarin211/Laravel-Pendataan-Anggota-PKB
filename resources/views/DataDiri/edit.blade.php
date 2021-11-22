@@ -59,37 +59,50 @@
     </style>
   </head>
   <body oncontextmenu='return false' class='snippet-body'>
-  <form action="{{url('/edit')}}" method="POST">
+        <form action="{{url('/edit')}}" method="POST">
     @csrf
     <input type="hidden" name="id" value="{{$data->id}}">
     <div class="container rounded bg-white mt-5 mb-5">
       <div class="row">
+        <div class="col-md-12 mt-3 mb-4">
+          <div class="text-center">
+            <h4>Data Diri</h4>
+          </div>
+        </div>
         <div class="col-md-5 border-right">
-          <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="{{url($data->Upload_Foto)}}" style="max-width:150px;">
-            <span class="font-weight-bold">{{$data->nama}}</span><span class="text-black-50">{{$data->Status}}</span><span></span></div>
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+            <img class="rounded-circle mt-5" src="{{url($data->Upload_Foto)}}" style="max-width:150px;">
+            <span class="font-weight-bold">{{$data->nama}}</span><span class="text-black-50">{{$data->Status}}</span>
+            <span>
+
+            </span>
+          </div>
             <br>
             <div class="row">
               <div class="col-md-12 mb-4">
+                <h6>Foto KTP</h6>
                 <iframe src="{{url($data->Upload_KTP)}}" class="col-md-12" class="ratio" allowfullscreen></iframe>
                 <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalKTP">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#ModalKTP">
                       Lihat Data
                     </button>
               </div>
               <br>
               <div class="col-md-12 mb-4">
+                <h6>File Surat Pernyataan</h6>
                 <iframe src="{{url($data->Upload_Surat_Pernyataan)}}" class="col-md-12" class="ratio" allowfullscreen></iframe>
-                <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalSP">
+                {{-- Button trigger modal --}}
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#ModalSP">
                       Lihat Data
                     </button>
 
               </div>
               <br>
               <div class="col-md-12 mb-4">
+                <h6>File lainnya</h6>
                 <iframe src="{{url($data->filelainnya)}}" class="col-md-12"class="ratio" allowfullscreen></iframe>
                 <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalFL">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#ModalFL">
                       Lihat File
                     </button>
               </div>
@@ -106,10 +119,19 @@
                 <p><input class="form-control" placeholder="Nama..." oninput="this.className = ''" name="nama" @if(!empty($data->nama)) value="{{$data->nama}}" @endif></p>
                 <h6>NIK</h6>
                 <p><input class="form-control" placeholder="3271..." oninput="this.className = ''" name="NIK" @if(!empty($data->NIK)) value="{{$data->NIK}}" @endif></p>
+
+                <h6>Status</h6>
+                  <select name="Status" class="form-select ">
+                    <option value="{{$data->Status}}">{{$data->Status}}</option>
+                    <option value="Anggota">Anggota</option>
+                    <option value="Pengurus">Pengurus</option>
+                  </select>
+                  <div class="mb-1"></div>
                 <h6>Jenis Kelamin</h6>
                 <p><select class="form-select" name="jenis_kelamin"> @if(!empty($data->jenis_kelamin)) <option value="{{$data->jenis_kelamin}}" selected>{{$data->jenis_kelamin}}</option> @endif <option value="Laki-Laki">Laki-Laki</option>
                     <option value="Perempuan">Perempuan</option>
-                  </select></p>
+                  </select>
+                </p>
               </div>
               <div class="col-md-12">
                 <h6>Provinsi</h6>
@@ -212,14 +234,18 @@
                 <h6>Rekomendasi</h6>
                 <p><input class="form-control" placeholder="Favourite car" oninput="this.className = ''" name="Rekomendasi" @if(!empty($data->Rekomendasi)) value="{{$data->Rekomendasi}}" @endif></p>
               </div>
-              <div class="mt-5 text-center"><button class="btn btn-success" type="submit">Save Profile</button></div>
+              <div class="mt-5 text-center">
+                <button class="btn btn-success" type="submit">Save Profile</button>
+              </div>
             </div>
           </div>
         </div>
-    </form>
-        <div class="col-md-3">
+  </form>
+
+        <div class="col-md-3 mt-5">
           @if (!empty($_GET['Dapil']))
-          <div class="col-md-12">
+          <h4>Data Pemilihan Sipil</h4>
+          <div class="col-md-12 mt-4">
               <h6>Masukan Daerah pemilihan</h6>
                  <form method="POST" action="/Dapilset"> 
                  @csrf
@@ -322,10 +348,9 @@
                     </script>
                    </p>
                   </div>
-                  <button type="submit" class="btn btn-primary">Filter</button>
+                  <button type="submit" class="btn btn-success">Simpan</button>
                 </form>
             {{--  --}}
-            <a href="" class="btn btn-primary col-md-12">jas</a>
           </div>
           @endif
         </div>
@@ -388,7 +413,6 @@
       });
     </script>
      {{-- Modal --}}
-{{-- D8E9A8 --}}
                     <!-- Modal -->
                     <form action="/pasfile" method="POST" enctype="multipart/form-data">
                       <input type="hidden" name="folder" value="KTP/{{$data->user_id}}">
@@ -419,7 +443,7 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="submit" class="btn btn-primary">Save changes</button>
+                              <button type="submit" class="btn btn-success">Save changes</button>
                             </div>
                           </div>
                         </div>
@@ -454,7 +478,7 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="submit" class="btn btn-primary">Save changes</button>
+                              <button type="submit" class="btn btn-success">Save changes</button>
                             </div>
                           </div>
                         </div>
@@ -488,7 +512,7 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-success">Save changes</button>
                           </div>
                         </div>
                       </div>

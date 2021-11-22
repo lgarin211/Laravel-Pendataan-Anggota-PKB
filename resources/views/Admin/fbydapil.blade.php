@@ -122,7 +122,7 @@
 		</form>
 	</div>
 	<div class="col-md-10 card">
-		@if (!empty($_GET['data']))
+		{{-- @if (!empty($_GET['data'])) --}}
 		<div class="card-body">
 		<div class="row">
 		  <div class="col-md-6">
@@ -159,7 +159,7 @@
 		  		  <tbody></tbody>
 			</table>
 			</div>
-			@endif
+			{{-- @endif --}}
 		</div>
 	</div>
 </div>

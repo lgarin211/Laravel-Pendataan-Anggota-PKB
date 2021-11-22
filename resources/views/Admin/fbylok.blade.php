@@ -22,7 +22,8 @@
 	<div class="col-md-2 card">
 	   <form method="GET" action="/Fbylok"> 
 	   <input type="hidden" name="data" value="true">
-	   <div class="tab mr-1 ml-1">
+	   <div class="tab mr-1 ml-1 mt-1 mb-1">
+      <div class="mt-5"></div>
        <h6>Provinsi</h6>
        <p>
         <select class="form-select" name="Provinsi" id="Provinsi" onchange="gokob()">
@@ -118,11 +119,12 @@
         </script>
        </p>
       </div>
-      <button type="submit" class="btn btn-primary">Filter</button>
+      <button type="submit" class="btn btn-success col-md-12">Filter</button>
 		</form>
+    <div class="mt-5"></div>
 	</div>
 	<div class="col-md-10 card">
-		@if (!empty($_GET['data']))
+		{{-- @if (!empty($_GET['data'])) --}}
 		<div class="card-body">
 		<div class="row">
 		  <div class="col-md-6">
@@ -159,7 +161,7 @@
 		  		  <tbody></tbody>
 			</table>
 			</div>
-			@endif
+			{{-- @endif --}}
 		</div>
 	</div>
 </div>

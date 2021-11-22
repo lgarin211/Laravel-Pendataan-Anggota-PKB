@@ -158,34 +158,35 @@ class DataAnggotaController extends Controller
     {
         if (!empty($_POST)) {
              // dd($_POST);
-    $data=[
-      "nama" => $request->nama,
-      "NIK" => $request->NIK,
-      "jenis_kelamin" => $request->jenis_kelamin,
-      "Provinsi" => $request->Provinsi,
-      "Kabupaten" => $request->Kabupaten,
-      "Kecamatan" => $request->Kecamatan,
-      "Kelurahan" => $request->Kelurahan,
-      "RT" => $request->RT,
-      "RW" => $request->RW,
-      "Alamat" => $request->Alamat,
-      "email" => $request->email,
-      "No_Hape" => $request->No_Hape,
-      "Rekomendasi" => $request->Rekomendasi,
-      // "Upload_Foto"=> $Upload_Foto,
-      // "Upload_KTP"=>$Upload_KTP,
-      // "Upload_Surat_Pernyataan"=>$Upload_Surat_Pernyataan,
-      // "filelainnya"=>$filelainnya,
-      // "user_id"=>auth()->user()->id,
-      // 'no_keanggotaan'=>strtotime("now")
-    ];
-    // dd($data);
-        DB::table('data_anggotas')
+            $data=[
+              "nama" => $request->nama,
+              "NIK" => $request->NIK,
+              "jenis_kelamin" => $request->jenis_kelamin,
+              "Provinsi" => $request->Provinsi,
+              "Kabupaten" => $request->Kabupaten,
+              "Kecamatan" => $request->Kecamatan,
+              "Kelurahan" => $request->Kelurahan,
+              "RT" => $request->RT,
+              "RW" => $request->RW,
+              "Alamat" => $request->Alamat,
+              "email" => $request->email,
+              "No_Hape" => $request->No_Hape,
+              "Rekomendasi" => $request->Rekomendasi,
+              "Status" => $request->Status,
+              // "Upload_Foto"=> $Upload_Foto,
+              // "Upload_KTP"=>$Upload_KTP,
+              // "Upload_Surat_Pernyataan"=>$Upload_Surat_Pernyataan,
+              // "filelainnya"=>$filelainnya,
+              // "user_id"=>auth()->user()->id,
+              // 'no_keanggotaan'=>strtotime("now")
+            ];
+                // dd($data);
+              DB::table('data_anggotas')
               ->where('id', $request->id)
               ->update($data);
-        // dd($data);
-        // DB::table('data_anggotas')->insert($data);
-        return redirect('/');
+                // dd($data);
+                // DB::table('data_anggotas')->insert($data);
+            return back();
         }
         if (!empty($_GET['id'])) {
         $data=DB::table('data_anggotas')->where('id',$_GET['id'])->first();
