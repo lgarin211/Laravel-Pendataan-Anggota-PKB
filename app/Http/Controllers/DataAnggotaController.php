@@ -76,7 +76,7 @@ class DataAnggotaController extends Controller
             $id=DB::table('users')->where('email',$request->email)->first()->id;
         }
         if(!empty($_POST)) {
-    
+
         // dd($request);
         $idauth=$id;
 
@@ -140,9 +140,9 @@ class DataAnggotaController extends Controller
         // dd($data);
         DB::table('data_anggotas')->insert($data);
         return redirect('/dashboard');}
-        return view('DataDiri/datadiri');
+        // return view('DataDiri/datadiri');
     }
-    
+
     public function cetak()
     {
         // $data=DB::table('data_anggotas')->where('user_id',auth()->user()->id)->get();
@@ -184,7 +184,7 @@ class DataAnggotaController extends Controller
               ->where('id', $request->id)
               ->update($data);
         // dd($data);
-        // DB::table('data_anggotas')->insert($data);   
+        // DB::table('data_anggotas')->insert($data);
         return redirect('/');
         }
         if (!empty($_GET['id'])) {
@@ -192,10 +192,10 @@ class DataAnggotaController extends Controller
         // $data2=DB::table('Dapil_anggotas')->where('id',$_GET['id'])->first();
         if(!empty($request->poinadmin)) {
         return back();
-        }  
+        }
         return view('DataDiri.edit',['data'=>$data]);
-        }   
-        
+        }
+
     }
     public function Fbylok(Request $request)
     {
@@ -214,7 +214,7 @@ class DataAnggotaController extends Controller
                     $users=$users->where($key, $item);
                 }
                 }else{
-                        $users = DB::table('data_anggotas');   
+                        $users = DB::table('data_anggotas');
                 }
             $users=$users->get();
             $data = $users;
