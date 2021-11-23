@@ -17,8 +17,20 @@ class dapil_anggotasExport implements FromView
     */
     public function view(): View
     {
-    	if (!empty($_GET)) {
-    		$bin=['DProvinsi'=>$_GET['Provinsi'],'DKabupaten'=>$_GET['Kabupaten'],"DKecamatan"=>$_GET['Kecamatan'],"DKelurahan"=>$_GET['Kelurahan']];
+        $bin=['Provinsi','Kabupaten',"Kecamatan","Kelurahan"];
+        if (!empty($_GET['Provinsi'])) {
+            $bin=['Provinsi'=>$_GET['Provinsi'],'Kabupaten'=>$_GET['Kabupaten'],"Kecamatan"=>$_GET['Kecamatan'],"Kelurahan"=>$_GET['Kelurahan']];
+
+    		$ban=['DProvinsi'=>$_GET['Provinsi'],'DKabupaten'=>$_GET['Kabupaten'],"DKecamatan"=>$_GET['Kecamatan'],"DKelurahan"=>$_GET['Kelurahan']];
+
+                if (!empty($ban)) {
+                    foreach ($ban as $key => $item) {
+                        if ($item=="" or $item=="true") {
+                        unset($ban[$key]);
+                        }
+                    }
+                }
+
                 if (!empty($bin)) {
                     foreach ($bin as $key => $item) {
                         if ($item=="" or $item=="true") {
@@ -26,19 +38,21 @@ class dapil_anggotasExport implements FromView
                         }
                     }
                 }
-            $users = DB::table('data_anggotas');
-            foreach ($bin as $key => $item) {
+
+            $users = DB::table('data_anggotas')->WhereNotNull('DProvinsi');
+            
+            foreach ($ban as $key => $item) {
                 $users=$users->where($key, $item);
             }
-            $users=$users->get();
-    	}else{
-			$users = DB::table('data_anggotas')->get();
-    	}
-            $data = $users;
-        // dd($data);
-        return view('exports.data_anggota', [
-            'data_anggota' => $data
-        ]);
 
+            $users=$users->get();
+        	
+            }else{
+			$users = DB::table('data_anggotas')->WhereNotNull('DProvinsi')->get();
+        	}
+            $data = $users;
+            return view('exports.data_anggota', [
+            'data_anggota' => $data,'pro'=>$bin
+        ]);
     }
 }

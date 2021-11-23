@@ -49,7 +49,7 @@
           <th>No_Hape</th>
           <th>Rekomendasi</th> --}}
           <th>email</th>
-{{--           <th>IMG_KTP</th> --}}
+          <th>Role</th>
           <th width="100px">Aksi</th>
         </tr>
       </thead>
@@ -73,7 +73,6 @@
       ajax: "{{ route('users.index') }}",
       columns: [
          {data: 'name',name: 'name',},
-
          // {data: 'NIK', name: 'NIK'},
          // {data: 'jenis_kelamin', name: 'jenis_kelamin'},
          // {data: 'Alamat', name: 'Alamat'},
@@ -86,6 +85,7 @@
          // {data: 'No_Hape', name: 'No_Hape'},
          // {data: 'Rekomendasi', name: 'Rekomendasi'},
          {data: 'email', name: 'email',"visible": true},
+         {data: 'role', name: 'role',"visible": true},
          // {data: 'Photo_Profile', name: 'Photo_Profile',"visible": true ,searchable: false,orderable: false},
          // {data: 'IMG_KTP', name: 'IMG_KTP',"visible": true,searchable: false,orderable: false},
          {data: 'action', name: 'action',orderable: false,searchable: false},

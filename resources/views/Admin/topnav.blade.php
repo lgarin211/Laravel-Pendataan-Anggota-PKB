@@ -33,15 +33,19 @@ $GENERAL=DB::table('GENERAL');
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">David Greymaax</p>
+                  <p class="mb-1 text-black">{{auth()->user()->name}}</p>
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="mdi mdi-cached mr-2 text-success"></i> Activity Log </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
-                  <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
+{{--                 <a class="dropdown-item" href="#">
+                  <i class="mdi mdi-cached mr-2 text-success"></i> Activity Log </a> --}}
+                {{-- <div class="dropdown-divider"></div> --}}
+                  <form action="/logout" method="POST" class="dropdown-item">
+                    @csrf
+                    <button type="submit" class="btn btn-dangger">
+                      <i class="mdi mdi-logout mr-2 text-primary"></i> Signout                    
+                    </button>
+                  </form>
               </div>
             </li>
             <li class="nav-item d-none d-lg-block full-screen-link">
@@ -137,9 +141,15 @@ $GENERAL=DB::table('GENERAL');
                 <h6 class="p-3 mb-0 text-center">See all notifications</h6>
               </div>
             </li> -->
-            <li class="nav-item nav-logout d-none d-lg-block">
-              <a class="nav-link" href="#">
-                <i class="mdi mdi-power"></i>
+            <li class="nav-item nav-logout d-flex d-lg-block">
+              
+                <form action="/logout" method="POST" class="dropdown-item">
+                    @csrf
+                    <button type="submit" class="btn btn-dangger">
+                <i class="mdi mdi-power"></i>                    
+                    </button>
+                  </form>
+
               </a>
             </li>
             <!-- <li class="nav-item nav-settings d-none d-lg-block">

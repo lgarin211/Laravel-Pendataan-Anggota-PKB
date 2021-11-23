@@ -12,6 +12,8 @@ use DataTables;
 use Illuminate\Support\Facades\DB;
 
 use App\Exports\data_anggotasExport;
+use App\Exports\dapil_anggotasExport;
+
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -39,11 +41,22 @@ class UserController extends Controller
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
-                      $btn = '<a href="javascript:void(0)" class="edit btn btn-warning btn-sm">edit Data'.$row->id.'</a>';
-                      return $btn;
+                        $btn='
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a class="btn btn-success" href="/sand?id='.$row->id.'" >Reset Sandi</a>
+                            <a class="btn btn-success" href="/Adminkan?id='.$row->id.'">Adminkan</a>
+                            <a class="btn btn-danger" href="/Hapus?table=users&id='.$row->id.'">Hapus Data</a>
+                        </div>
+                        ';
+                    return $btn;
                     })
                     ->addColumn('Cetak', function ($row) {
-                        $btn='<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">Cetak Kartu ke'.$row->id.'</a>';
+                        $btn='
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a class="btn btn-success" href="/sand?id='.$row->id.'" onclick("alert(`Sandi Sudah Di ubah`)")>Reset Sandi</a>
+                            <a class="btn btn-dangger" href="/Hapus?table=users&id='.$row->id.'">Hapus Data</a>
+                        </div>
+                        ';
                     return $btn;
                     })
                     // ->rawColumns(['update', 'nama','pangkat','kesatuan','kotama', 'pinjaman', 'jml_angs', 'jml_tunggakan'])
@@ -69,6 +82,7 @@ class UserController extends Controller
                             <a class="btn btn-success" href="/cetak?id='.$row->id.'">Cetak</a>
                             <a class="btn btn-success" href="/edit?id='.$row->id.'">Lihat Data</a>
                             <a class="btn btn-success" href="/edit?dapil=true&id='.$row->id.'">Buat Dapil</a>
+                            <a class="btn btn-dangger" href="/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
                         </div>';
                       return $btn;
                     })
@@ -98,13 +112,32 @@ class UserController extends Controller
 
     public function export() 
     {
+        $bin=['Provinsi','Kabupaten',"Kecamatan","Kelurahan"];
+        $name='';
+        if (!empty($_GET)) {
+            $bin=['Provinsi'=>$_GET['Provinsi'],'Kabupaten'=>$_GET['Kabupaten'],"Kecamatan"=>$_GET['Kecamatan'],"Kelurahan"=>$_GET['Kelurahan']];
 
-        return Excel::download(new data_anggotasExport, 'users.xlsx');
+                if (!empty($bin)) {
+                    foreach ($bin as $key => $item) {
+                        if ($item=="" or $item=="true") {
+                        unset($bin[$key]);
+                        }else{
+                            $name=$name.$item.'|';
+                        }
+                    }
+                }
+        }
+        $nama=date('d-m-Y ').$name.'('.strtotime("now").').xlsx';
+        // dd($nama);
+        return Excel::download(new data_anggotasExport, $nama);
     }
+
     public function dapilexport() 
     {
-
-        return Excel::download(new data_anggotasExport, 'users.xlsx');
+        $name="dapil";
+        $nama=date('d-m-Y ').$name.'('.strtotime("now").').xlsx';
+        // dd($nama);
+        return Excel::download(new dapil_anggotasExport, $nama);
     }
 
 

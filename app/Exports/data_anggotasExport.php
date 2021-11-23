@@ -17,8 +17,9 @@ class data_anggotasExport implements FromView
     */
     public function view(): View
     {
-        if (!empty($_GET)) {
-            $bin=['DProvinsi'=>$_GET['Provinsi'],'DKabupaten'=>$_GET['Kabupaten'],"DKecamatan"=>$_GET['Kecamatan'],"DKelurahan"=>$_GET['Kelurahan']];
+        $bin=['Provinsi','Kabupaten',"Kecamatan","Kelurahan"];;
+        if (!empty($_GET['Provinsi'])) {
+            $bin=['Provinsi'=>$_GET['Provinsi'],'Kabupaten'=>$_GET['Kabupaten'],"Kecamatan"=>$_GET['Kecamatan'],"Kelurahan"=>$_GET['Kelurahan']];
                 if (!empty($bin)) {
                     foreach ($bin as $key => $item) {
                         if ($item=="" or $item=="true") {
@@ -35,8 +36,9 @@ class data_anggotasExport implements FromView
             $users = DB::table('data_anggotas')->get();
         }
         $data=$users;
+        // dd($bin);
         return view('exports.data_anggota', [
-            'data_anggota' => $data
+            'data_anggota' => $data,'pro'=>$bin
         ]);
 
     }

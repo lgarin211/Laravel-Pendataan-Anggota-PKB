@@ -1,7 +1,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <?php  $users = DB::table('data_anggotas')->where('user_id',auth()->user()->id)->first();?>
 @if(empty($users))
-<div style=" width: 100%; height: 70vh;" class="text-center">
+<div style=" width: 100%; min-height: 30vh;" class="text-center">
   <h2>{{Auth::user()->nama}} Beberapa Data Anda Belum Lengkap Harap Lengkapi untuk Melakukan Registrasi</h2>
   <a href="/kelengkapandata" class="btn btn-primary col-md-12">Lengkapi Data</a>
 </div>
@@ -23,21 +23,21 @@
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
-      <th scope="row">{{$users->nama}}</th>
-      <th scope="row">{{$users->Alamat}}</th>
-      <th scope="row">{{$users->RT}}</th>
-      <th scope="row">{{$users->RW}}</th>
-      <th scope="row">{{$users->Kelurahan}}</th>
-      <th scope="row">{{$users->No_Hape}}</th>
-      <th scope="row">{{$users->Rekomendasi}}</th>
-      <th scope="row">
+      <td scope="row">1</td>
+      <td scope="row">{{$users->nama}}</td>
+      <td scope="row">{{$users->Alamat}}</td>
+      <td scope="row">{{$users->RT}}</td>
+      <td scope="row">{{$users->RW}}</td>
+      <td scope="row">{{$users->Kelurahan}}</td>
+      <td scope="row">{{$users->No_Hape}}</td>
+      <td scope="row">{{$users->Rekomendasi}}</td>
+      <td scope="row">
         <div class="btn-group" role="group" aria-label="Basic example">
           <a href="/cetak?user_id={{$users->user_id}}" class="btn btn-success">Cetak Kartu</a>
-          <a href="/edit?id={{$users->id}}" class="btn btn-success">Edit Kartu</a>
-          <a  class="btn btn-success">Hapus</a>
+          <a href="/edit?id={{$users->id}}" class="btn btn-success">Edit Data</a>
+          <a href="/Hapus?id={{$users->id}}&table=anggotas"class="btn btn-success">Hapus</a>
         </div>
-      </th>
+      </td>
     </tr>
   </tbody>
 </table>

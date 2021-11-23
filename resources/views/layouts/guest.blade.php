@@ -15,6 +15,11 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+        <style type="text/css">
+    body{
+     background-color:#e1f3af !important;
+    }
+</style>
     </head>
     <body >
         <div class="font-sans text-gray-900 antialiased">

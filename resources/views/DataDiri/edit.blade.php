@@ -69,7 +69,7 @@
             <h4>Data Diri</h4>
           </div>
         </div>
-        <div class="col-md-5 border-right">
+        <div class="col-md-5 border-right shadow-sm p-3 mb-5 bg-body">
           <div class="d-flex flex-column align-items-center text-center p-3 py-5">
             <img class="rounded-circle mt-5" src="{{url($data->Upload_Foto)}}" style="max-width:150px;">
             <span class="font-weight-bold">{{$data->nama}}</span><span class="text-black-50">{{$data->Status}}</span>
@@ -83,7 +83,7 @@
                 <h6>Foto KTP</h6>
                 <iframe src="{{url($data->Upload_KTP)}}" class="col-md-12" class="ratio" allowfullscreen></iframe>
                 <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#ModalKTP">
+                    <button type="button" class="btn btn-success col-md-12" data-bs-toggle="modal" data-bs-target="#ModalKTP">
                       Lihat Data
                     </button>
               </div>
@@ -92,7 +92,7 @@
                 <h6>File Surat Pernyataan</h6>
                 <iframe src="{{url($data->Upload_Surat_Pernyataan)}}" class="col-md-12" class="ratio" allowfullscreen></iframe>
                 {{-- Button trigger modal --}}
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#ModalSP">
+                    <button type="button" class="btn btn-success col-md-12" data-bs-toggle="modal" data-bs-target="#ModalSP">
                       Lihat Data
                     </button>
 
@@ -102,13 +102,13 @@
                 <h6>File lainnya</h6>
                 <iframe src="{{url($data->filelainnya)}}" class="col-md-12"class="ratio" allowfullscreen></iframe>
                 <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#ModalFL">
+                    <button type="button" class="btn btn-success col-md-12" data-bs-toggle="modal" data-bs-target="#ModalFL">
                       Lihat File
                     </button>
               </div>
             </div>
         </div>
-        <div class="col-md-4 border-right">
+        <div class="col-md-4 border-right shadow-sm p-3 mb-5 bg-body">
           <div class="p-3 py-5">
             <div class="d-flex justify-content-between align-items-center mb-3">
               <h4 class="text-right">Profile Settings</h4>
@@ -235,15 +235,14 @@
                 <p><input class="form-control" placeholder="Favourite car" oninput="this.className = ''" name="Rekomendasi" @if(!empty($data->Rekomendasi)) value="{{$data->Rekomendasi}}" @endif></p>
               </div>
               <div class="mt-5 text-center">
-                <button class="btn btn-success" type="submit">Save Profile</button>
+                <button class="btn btn-success col-md-12" type="submit">Save Profile</button>
               </div>
             </div>
           </div>
         </div>
   </form>
-
-        <div class="col-md-3 mt-5">
-          @if (!empty($_GET['Dapil']))
+        <div class="col-md-3 mt-5 shadow-sm p-3 mb-5 bg-body">
+          @if (!empty($_GET['dapil']))
           <h4>Data Pemilihan Sipil</h4>
           <div class="col-md-12 mt-4">
               <h6>Masukan Daerah pemilihan</h6>
@@ -348,7 +347,7 @@
                     </script>
                    </p>
                   </div>
-                  <button type="submit" class="btn btn-success">Simpan</button>
+                  <button type="submit" class="btn btn-success col-md-12">Simpan</button>
                 </form>
             {{--  --}}
           </div>
@@ -443,7 +442,7 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="submit" class="btn btn-success">Save changes</button>
+                              <button type="submit" class="btn btn-success col-md-12">Save changes</button>
                             </div>
                           </div>
                         </div>
@@ -478,7 +477,7 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="submit" class="btn btn-success">Save changes</button>
+                              <button type="submit" class="btn btn-success col-md-12">Save changes</button>
                             </div>
                           </div>
                         </div>
@@ -512,7 +511,7 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success">Save changes</button>
+                            <button type="submit" class="btn btn-success col-md-12">Save changes</button>
                           </div>
                         </div>
                       </div>

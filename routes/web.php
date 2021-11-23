@@ -20,9 +20,23 @@ Route::get('/', function () {
     return redirect('login');
 });
 
+Route::get('/ard', function () {
+    if (auth()->user()->role=='Admin') {
+        return redirect('anggota');
+    }else{
+    return view('User/master');
+    }
+});
+
+
 Route::get('data_users', [UserController::class, 'index'])->name('users.index');
 
 Route::post('/adduser', [DataAnggotaController::class, 'akun_add']);
+Route::get('/Hapus', [DataAnggotaController::class, 'Hapus']);
+
+Route::get('/sand', [DataAnggotaController::class, 'sand']);
+Route::get('/Adminkan', [DataAnggotaController::class, 'Adminkan']);
+
 Route::get('anggota', [UserController::class, 'anggota'])->name('anggota.index');
 
 Route::get('/edit', [DataAnggotaController::class, 'edit']);
@@ -47,7 +61,7 @@ Route::get('/kelengkapandata', function () {
     // dd($_GET);
     return view('DataDiri/datadiri');
 });
-Route::get('/kelengkapandata', [DataAnggotaController::class, 'kelengkapandata']);
+// Route::get('/kelengkapandata', [DataAnggotaController::class, 'kelengkapandata']);
 Route::post('/kelengkapandata', [DataAnggotaController::class, 'kelengkapandata']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

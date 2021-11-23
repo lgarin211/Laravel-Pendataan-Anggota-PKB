@@ -122,7 +122,7 @@
 		</form>
 	</div>
 	<div class="col-md-10 card">
-		{{-- @if (!empty($_GET['data'])) --}}
+		@if (!empty($_GET['data']))
 		<div class="card-body">
 		<div class="row">
 		  <div class="col-md-6">
@@ -131,7 +131,8 @@
 		  </div>
 		  <div class="col-md-6 text-right">
 		    <h4 class="card-title">Export Data</h4>
-		    <a href="{{url('/')}}/dapil/export?{{$ren}}" target="_blank" class="btn btn-success mb-1 mt-1">expord</a>
+        <a href="{{url('/')}}/dapil/export?{{$ren}}" target="_blank" class="btn btn-success mb-1 mt-1">expord</a>
+		    <a href="{{url('/')}}/cetak?{{$ren}}" target="_blank" class="btn btn-success mb-1 mt-1">Cetak</a>
 		  </div>
 		</div>
 			<table class="table table-striped data-table table-responsive">
@@ -159,7 +160,7 @@
 		  		  <tbody></tbody>
 			</table>
 			</div>
-			{{-- @endif --}}
+			@endif
 		</div>
 	</div>
 </div>

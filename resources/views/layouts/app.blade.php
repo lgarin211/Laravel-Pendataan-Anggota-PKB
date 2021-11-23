@@ -1,3 +1,11 @@
+@php
+$role=Auth::user()->role;
+if ($role=='Admin') {
+     redirect('anggota');
+}else{
+     redirect('ard');
+}
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -18,7 +26,14 @@
         }
         </style>
         @livewireStyles
-
+<style type="text/css">
+    body{
+     background-color:#e1f3af !important;
+    }
+    .antialiased{
+     background-color:#e1f3af !important;
+    }
+</style>
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head >
