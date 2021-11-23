@@ -1,3 +1,6 @@
+@php
+$GENERAL=DB::table('GENERAL');
+@endphp
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,7 +23,7 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{url('Template1')}}/assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{url('Template1')}}/assets/images/favicon.ico" />
+    <link rel="shortcut icon" href="{{url($GENERAL->where('Key_tag','Logo_IMG')->first()->Value1)}}" />
     @yield('css')
   </head>
   <body style="background-color: #D8E9A8 !important;">
