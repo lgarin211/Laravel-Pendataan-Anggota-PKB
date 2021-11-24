@@ -84,7 +84,7 @@ class UserController extends Controller
                       $btn = '
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <a class="btn btn-success" href="/cetak?id='.$row->id.'">Cetak</a>
-                            <a class="btn btn-success" href="/edit?id='.$row->id.'">Lihat Data</a>
+                            <a class="btn btn-success" href="/resume?id='.$row->id.'">Lihat Data</a>
                             <a class="btn btn-success" href="/edit?dapil=true&id='.$row->id.'">Buat Dapil</a>
                             <a class="btn btn-danger" href="/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
                         </div>';
