@@ -3,7 +3,7 @@
           <div class="sidebar-header">
             <div class="d-flex justify-content-between">
               <div class="logo">
-                <a href="index.html">
+                <a href="/">
                   <img src="{{url('/')}}/PKB/LOGOPKB.png" alt="Logo" style="min-width: 150px; min-height: 150px;" srcset="">
                 </a>
               </div>
@@ -18,7 +18,7 @@
             <ul class="menu">
               <li class="sidebar-title">Menu</li>
               <li class="sidebar-item  ">
-                <a href="/Dashboard" class='sidebar-link'>
+                <a href="/" class='sidebar-link'>
                   <i class="bi bi-grid-fill"></i>
                   <span>Dashboard</span>
                 </a>
