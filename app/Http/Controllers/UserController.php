@@ -54,7 +54,7 @@ class UserController extends Controller
                         $btn='
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <a class="btn btn-success" href="/sand?id='.$row->id.'" onclick("alert(`Sandi Sudah Di ubah`)")>Reset Sandi</a>
-                            <a class="btn btn-dangger" href="/Hapus?table=users&id='.$row->id.'">Hapus Data</a>
+                            <a class="btn btn-danger" href="/Hapus?table=users&id='.$row->id.'">Hapus Data</a>
                         </div>
                         ';
                     return $btn;
@@ -69,6 +69,80 @@ class UserController extends Controller
 
     }
 
+    public function data_users_s(Request $request)
+    {
+        if (auth()->user()->role=='Admin') {
+        $users = DB::table('data_anggotas')->get();
+        }else{
+        $users = DB::table('data_anggotas')->where('user_id',auth()->user()->id)->get();
+        }
+        if ($request->ajax()) {
+            $data = $users;
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+                      $btn = '
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a class="btn btn-success" href="/cetak?id='.$row->id.'">Cetak</a>
+                            <a class="btn btn-success" href="/edit?id='.$row->id.'">Lihat Data</a>
+                            <a class="btn btn-success" href="/edit?dapil=true&id='.$row->id.'">Buat Dapil</a>
+                            <a class="btn btn-danger" href="/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
+                        </div>';
+                      return $btn;
+                    })
+                    ->addColumn('Photo_Profile', function($row){
+                      $btn = '<a href="/'.$row->Upload_Foto.'" target="_blank">
+                      <img style="min-width: 150px !important;  min-height: 150px !important;border-radius: 0% !important;}" src="'.$row->Upload_Foto.'" class="img-thumbnail" >
+                      </a>';
+                      return $btn;
+                    })
+                    ->addColumn('IMG_KTP', function($row){
+                      $btn = '
+                      <a href="/'.$row->Upload_KTP.'" target="_blank">
+                      <img style="min-width: 150px !important;  min-height: 150px !important;border-radius: 0% !important;}" src="'.$row->Upload_KTP.'" class="img-thumbnail" >
+                      </a>';
+                      return $btn;
+                    })
+                    // ->rawColumns(['update', 'nama','pangkat','kesatuan','kotama', 'pinjaman', 'jml_angs', 'jml_tunggakan'])
+                    // ->toJson()
+                    ->rawColumns(['action','Cetak','IMG_KTP','Photo_Profile'])
+                    ->make(true);
+        }
+    }
+
+    public function data_users_admin(Request $request)
+    {
+
+        $users = DB::table('data_anggotas')->groupBy('user_id')->
+                join('users', 'users.id', '=', 'data_anggotas.user_id')
+                ->get();
+        if ($request->ajax()) {
+            $data = $users;
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+                      $btn = '
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a class="btn btn-success" href="/cetak?id='.$row->id.'">Cetak</a>
+                            <a class="btn btn-success" href="/edit?id='.$row->id.'">Lihat Data</a>
+                            <a class="btn btn-success" href="/edit?dapil=true&id='.$row->id.'">Buat Dapil</a>
+                            <a class="btn btn-danger" href="/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
+                        </div>';
+                      return $btn;
+                    })
+                    ->addColumn('DataUser', function($row){
+                      $btn = DB::table('data_anggotas')->where('user_id',$row->id)->count();
+                      return $btn;
+                    })
+                    // ->rawColumns(['update', 'nama','pangkat','kesatuan','kotama', 'pinjaman', 'jml_angs', 'jml_tunggakan'])
+                    // ->toJson()
+                    ->rawColumns(['action','Datauser'])
+                    ->make(true);
+        }
+    }
+
+
+
     public function anggota(Request $request)
     {
         $users = DB::table('data_anggotas')->get();
@@ -82,20 +156,20 @@ class UserController extends Controller
                             <a class="btn btn-success" href="/cetak?id='.$row->id.'">Cetak</a>
                             <a class="btn btn-success" href="/edit?id='.$row->id.'">Lihat Data</a>
                             <a class="btn btn-success" href="/edit?dapil=true&id='.$row->id.'">Buat Dapil</a>
-                            <a class="btn btn-dangger" href="/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
+                            <a class="btn btn-danger" href="/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
                         </div>';
                       return $btn;
                     })
                     ->addColumn('Photo_Profile', function($row){
                       $btn = '<a href="/'.$row->Upload_Foto.'" target="_blank">
-                      <img style="width: 150px !important;  height: 150px !important;border-radius: 0% !important;}" src="'.$row->Upload_Foto.'" class="img-thumbnail" >
+                      <img style="min-width: 150px !important;  min-height: 150px !important;border-radius: 0% !important;}" src="'.$row->Upload_Foto.'" class="img-thumbnail" >
                       </a>';
                       return $btn;
                     })
                     ->addColumn('IMG_KTP', function($row){
                       $btn = '
                       <a href="/'.$row->Upload_KTP.'" target="_blank">
-                      <img style="    width: 150px !important;  height: 150px !important;border-radius: 0% !important;}" src="'.$row->Upload_KTP.'" class="img-thumbnail" >
+                      <img style="min-width: 150px !important;  min-height: 150px !important;border-radius: 0% !important;}" src="'.$row->Upload_KTP.'" class="img-thumbnail" >
                       </a>';
                       return $btn;
                     })

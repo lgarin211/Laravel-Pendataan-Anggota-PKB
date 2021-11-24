@@ -1,7 +1,8 @@
-@extends('Admin.head') @section('css')
+@extends('Admin.Mazer')
+ @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+{{-- <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet"> --}}
+{{-- <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet"> --}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -12,7 +13,11 @@
 <script src="//cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 {{-- select --}}
 {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css"/>
-			<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script> --}} @endsection @section('content') <div class="card">
+      <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script> --}}
+@endsection 
+@section('content')
+<section class="section">
+ <div class="card">
   <div class="card-body">
     <div class="row">
       <div class="col-md-6">
@@ -36,18 +41,6 @@
       <thead>
         <tr>
           <th>nama</th>
-{{--           <th>NIK</th>
-          <th>Photo_Profile</th>
-          <th>jenis_kelamin</th>
-          <th>Alamat</th>
-          <th>Provinsi</th>
-          <th>Kabupaten</th>
-          <th>Kecamatan</th>
-          <th>Kelurahan</th>
-          <th>RT</th>
-          <th>RW</th>
-          <th>No_Hape</th>
-          <th>Rekomendasi</th> --}}
           <th>email</th>
           <th>Role</th>
           <th width="100px">Aksi</th>
@@ -57,6 +50,7 @@
     </table>
   </div>
 </div>
+</section>
 <!-- Modal -->
 @include('Admin.modaladduser')
 @include('Admin.modalusers')
@@ -73,21 +67,8 @@
       ajax: "{{ route('users.index') }}",
       columns: [
          {data: 'name',name: 'name',},
-         // {data: 'NIK', name: 'NIK'},
-         // {data: 'jenis_kelamin', name: 'jenis_kelamin'},
-         // {data: 'Alamat', name: 'Alamat'},
-         // {data: 'Provinsi', name: 'Provinsi',"visible": false},
-         // {data: 'Kabupaten', name: 'Kabupaten',"visible": false},
-         // {data: 'Kecamatan', name: 'Kecamatan',"visible": false},
-         // {data: 'Kelurahan', name: 'Kelurahan'},
-         // {data: 'RT', name: 'RT'},
-         // {data: 'RW', name: 'RW'},
-         // {data: 'No_Hape', name: 'No_Hape'},
-         // {data: 'Rekomendasi', name: 'Rekomendasi'},
          {data: 'email', name: 'email',"visible": true},
          {data: 'role', name: 'role',"visible": true},
-         // {data: 'Photo_Profile', name: 'Photo_Profile',"visible": true ,searchable: false,orderable: false},
-         // {data: 'IMG_KTP', name: 'IMG_KTP',"visible": true,searchable: false,orderable: false},
          {data: 'action', name: 'action',orderable: false,searchable: false},
          ],
     });

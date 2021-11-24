@@ -81,7 +81,7 @@ class DataAnggotaController extends Controller
     }
     public function kelengkapandata(Request $request)
     {
-        // dd('as');
+        // dd($request);
         $id=auth()->user()->id;
         if(!empty($request->poinadmin)) {
             $breakpoin=DB::table('users')->where('email',$request->email)->first();
@@ -160,7 +160,9 @@ class DataAnggotaController extends Controller
 
         // dd($data);
         DB::table('data_anggotas')->insert($data);
-        return redirect('/ard');}
+        // return redirect('/ard');
+        return back();
+        }
         // return view('DataDiri/datadiri');
     }
 

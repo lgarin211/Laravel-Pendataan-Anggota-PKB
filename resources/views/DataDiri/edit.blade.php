@@ -135,7 +135,8 @@
               </div>
               <div class="col-md-12">
                 <h6>Provinsi</h6>
-                <p><select class="form-select" name="Provinsi" id="Provinsi" onchange="gokob()"> @if(!empty($data->Provinsi)) <option value="{{$data->Provinsi}}" selected>{{$data->Provinsi}}</option> @endif </select>
+                <p><select class="form-select" name="Provinsi" id="Provinsi" onchange="gokob()">  
+                  <option value="" selected>Pilih Provinsi</option></select>
                   <script type="text/javascript">
                     fetch(`http://www.emsifa.com/api-wilayah-indonesia/api/provinces.json`).then(response => response.json()).then(provinces => {
                       provinces = provinces.reverse()
@@ -195,7 +196,8 @@
                   </script>
                 </p>
                 <h6>Kelurahan</h6>
-                <p><select class="form-select" name="Kelurahan" id="kel"> @if(!empty($data->Kelurahan)) <option value="{{$data->Kelurahan}}" selected>{{$data->Kelurahan}}</option> @endif </select>
+                <p>
+                  <select class="form-select" name="Kelurahan" id="kel"> @if(!empty($data->Kelurahan)) <option value="{{$data->Kelurahan}}" selected>{{$data->Kelurahan}}</option> @endif </select>
                   <script type="text/javascript">
                     function gokelu() {
                       document.getElementById('kel').innerHTML = `<option value="" selected>Harap Pilih Lokasi</option>`
@@ -206,8 +208,7 @@
                         var fora = '';
                         for (var i = vilage.length - 1; i >= 0; i--) {
                           // console.log(vilage[i])
-                          fora = fora + `
-                                                      <option id="` + vilage[i].name + `" value="` + vilage[i].name + `" cal='` + vilage[i].id + `'>` + vilage[i].name + `</option>`
+                          fora = fora + `<option id="` + vilage[i].name + `" value="` + vilage[i].name + `" cal='` + vilage[i].id + `'>` + vilage[i].name + `</option>`
                         }
                         binding = document.getElementById('kel').innerHTML
                         document.getElementById('kel').innerHTML = binding + fora

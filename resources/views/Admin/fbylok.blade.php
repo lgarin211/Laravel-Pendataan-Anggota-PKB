@@ -1,4 +1,4 @@
-@extends('Admin.head')
+@extends('Admin.Mazer')
  @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
 <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -13,17 +13,16 @@
 <script src="//cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 {{-- select --}}
 {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css"/>
-			<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script> --}}
+      <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script> --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 @endsection 
 @section('content') 
-<div class="">
+<section class="section"> 
 <div class="row">
-	<div class="col-md-2 card">
-	   <form method="GET" action="/Fbylok"> 
-	   <input type="hidden" name="data" value="true">
-	   <div class="tab mr-1 ml-1 mt-1 mb-1">
-      <div class="mt-5"></div>
+  <div class="col-md-2 card">
+     <form method="GET" action="/Fbylok"> 
+     <input type="hidden" name="data" value="true">
+     <div class="tab mr-1 ml-1">
        <h6>Provinsi</h6>
        <p>
         <select class="form-select" name="Provinsi" id="Provinsi" onchange="gokob()">
@@ -119,90 +118,89 @@
         </script>
        </p>
       </div>
-      <button type="submit" class="btn btn-success col-md-12">Filter</button>
-		</form>
-    <div class="mt-5"></div>
-	</div>
-	<div class="col-md-10 card">
-		@if (!empty($_GET['data']))
-		<div class="card-body">
-		<div class="row">
-		  <div class="col-md-6">
-		    <h4 class="card-title">Data Anggota Di Seluruh ... </h4>
-		    {{-- <p class="card-description"> Add class <code></code> </p>--}}
-		  </div>
-		  <div class="col-md-6 text-right">
-		    <h4 class="card-title">Export Data</h4>
-		    <a href="{{url('/')}}/users/export?{{$ren}}" target="_blank" class="btn btn-success mb-1 mt-1">expord</a>
+      <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
+  </div>
+  <div class="col-md-10 card">
+    @if (!empty($_GET['data']))
+    <div class="card-body">
+    <div class="row">
+      <div class="col-md-6">
+        <h4 class="card-title">Data Anggota Di Seluruh ... </h4>
+        {{-- <p class="card-description"> Add class <code></code> </p>--}}
+      </div>
+      <div class="col-md-6 text-right">
+        <h4 class="card-title">Export Data</h4>
+        <a href="{{url('/')}}/dapil/export?{{$ren}}" target="_blank" class="btn btn-success mb-1 mt-1">expord</a>
         <a href="{{url('/')}}/cetak?{{$ren}}" target="_blank" class="btn btn-success mb-1 mt-1">Cetak</a>
-
-		  </div>
-		</div>
-			<table class="table table-striped data-table table-responsive">
-			      <thead>
-			        <tr>
-			          <th>NIK</th>
-                <th>nama</th>
-			          <th>jenis_kelamin</th>
-			          <th>Alamat</th>
-			          <th>Provinsi</th>
-			          <th>Kabupaten</th>
-			          <th>Kecamatan</th>
-			          <th>Kelurahan</th>
-			          <th>RT</th>
-			          <th>RW</th>
-			          <th>No_Hape</th>
-			          <th>Rekomendasi</th>
-			          <th>email</th>
-                <th>Photo_Profile</th>
-			          <th>IMG_KTP</th>
-                <th>Status</th>
-			          <th width="100px">Aksi</th>
-			        </tr>
-			      </thead>
-		  		  <tbody></tbody>
-			</table>
-			</div>
-			@endif
-		</div>
-	</div>
+      </div>
+    </div>
+      <table class="table table-striped data-table table-responsive">
+            <thead>
+              <tr>
+                <th>NIK</th>
+                <th>NAMA</th>
+                <th>KELURAHAN</th>
+                <th>RT</th>
+                <th>RW</th>
+                <th>ALAMAT</th>
+                <th>JENIS KELAMIN</th>
+                <th>NOMOR TELPHONE</th>
+                <th>REKOMENDASI</th>
+                <th>Provinsi</th>
+                <th>Kabupaten</th>
+                <th>Kecamatan</th>
+                <th>email</th>
+                <th>Photo Profile</th>
+                <th>IMG KTP</th>
+                <th width="100px">Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+      </table>
+      </div>
+      @endif
+    </div>
+  </div>
 </div>
+</section> 
 
 @endsection 
-@section('js') <script type="text/javascript">
+@section('js') 
+<script type="text/javascript">
   @if (!empty($_GET['data']))
   var pas=document.URL
   // alert(pas)
-  $(function() {
+$(function() {
     var table = $('.data-table').DataTable({
       processing: true,
       serverSide: true,
       responsive: true,
-      select: true,
+      autoWidth : false,
       ajax: pas,
       columns: [
          {data: 'NIK', name: 'NIK'},
          {data: 'nama',name: 'nama',},
-         {data: 'jenis_kelamin', name: 'jenis_kelamin'},
-         {data: 'Alamat', name: 'Alamat'},
-         {data: 'Provinsi', name: 'Provinsi',"visible": false},
-         {data: 'Kabupaten', name: 'Kabupaten',"visible": false},
-         {data: 'Kecamatan', name: 'Kecamatan',"visible": false},
          {data: 'Kelurahan', name: 'Kelurahan'},
          {data: 'RT', name: 'RT'},
          {data: 'RW', name: 'RW'},
+         {data: 'Alamat', name: 'Alamat'},
+         {data: 'jenis_kelamin', name: 'jenis_kelamin'},
          {data: 'No_Hape', name: 'No_Hape'},
          {data: 'Rekomendasi', name: 'Rekomendasi'},
+         {data: 'Provinsi', name: 'Provinsi',"visible": false},
+         {data: 'Kabupaten', name: 'Kabupaten',"visible": false},
+         {data: 'Kecamatan', name: 'Kecamatan',"visible": false},
          {data: 'email', name: 'email',"visible": false},
          {data: 'Photo_Profile', name: 'Photo_Profile',"visible": true ,searchable: false,orderable: false},
          {data: 'IMG_KTP', name: 'IMG_KTP',"visible": true,searchable: false,orderable: false},
-         {data: 'Status', name: 'Status'},
          {data: 'action', name: 'action',orderable: false,searchable: false},
          ],
     });
   });
   @endif
-</script>
-  @include('Admin.js')
- @endsection
-
+</script> 
+@include('Admin.js')
+@endsection

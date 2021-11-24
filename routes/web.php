@@ -17,19 +17,43 @@ use App\Http\Controllers\DataAnggotaController;
 Route::post('/pasfile', [DataAnggotaController::class, 'pasfile']);
 
 Route::get('/', function () {
-    return redirect('login');
+    if (empty(auth()->user()->role)){
+        return redirect('/login');
+    }else{
+        return view('Admin/dasboard');
+    }
+    // return redirect('login');
+});
+
+Route::get('/resume', function () {
+    if ($_GET['id']) {
+    $data=DB::table('data_anggotas')->where('id',$_GET['id'])->first();
+    if (!empty($data)) {
+        return view('DataDiri/resume',['data'=>$data]);
+        }else{
+            return redirect('/dashboard');
+        }
+    }else{
+        return redirect('/ard');
+    }
+
+    // return redirect('login');
 });
 
 Route::get('/ard', function () {
     if (auth()->user()->role=='Admin') {
-        return redirect('anggota');
+        return redirect('/');
     }else{
-    return view('User/master');
+        // return view('Admin/master');
+        return redirect('/');
     }
 });
 
 
 Route::get('data_users', [UserController::class, 'index'])->name('users.index');
+
+Route::get('data_users_s', [UserController::class, 'data_users_s'])->name('users.us');
+Route::get('data_users_admin', [UserController::class, 'data_users_admin']);
 
 Route::post('/adduser', [DataAnggotaController::class, 'akun_add']);
 Route::get('/Hapus', [DataAnggotaController::class, 'Hapus']);

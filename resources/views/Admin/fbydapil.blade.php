@@ -1,4 +1,4 @@
-@extends('Admin.head')
+@extends('Admin.Mazer')
  @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
 <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -17,7 +17,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 @endsection 
 @section('content') 
-<div class="">
+<section class="section"> 
 <div class="row">
 	<div class="col-md-2 card">
 	   <form method="GET" action="/Fbydapil"> 
@@ -137,63 +137,65 @@
 		</div>
 			<table class="table table-striped data-table table-responsive">
 			      <thead>
-			        <tr>
+              <tr>
                 <th>NIK</th>
-			          <th>nama</th>
-			          <th>jenis_kelamin</th>
-			          <th>Alamat</th>
-			          <th>Provinsi</th>
-			          <th>Kabupaten</th>
-			          <th>Kecamatan</th>
-			          <th>Kelurahan</th>
-			          <th>RT</th>
-			          <th>RW</th>
-			          <th>No_Hape</th>
-			          <th>Rekomendasi</th>
-			          <th>email</th>
-                <th>Photo_Profile</th>
-			          <th>IMG_KTP</th>
-                <th>Status</th>
-			          <th width="100px">Aksi</th>
-			        </tr>
+                <th>NAMA</th>
+                <th>KELURAHAN</th>
+                <th>RT</th>
+                <th>RW</th>
+                <th>ALAMAT</th>
+                <th>JENIS KELAMIN</th>
+                <th>NOMOR TELPHONE</th>
+                <th>REKOMENDASI</th>
+                <th>Provinsi</th>
+                <th>Kabupaten</th>
+                <th>Kecamatan</th>
+                <th>email</th>
+                <th>Photo Profile</th>
+                <th>IMG KTP</th>
+                <th width="100px">Aksi</th>
+              </tr>
 			      </thead>
-		  		  <tbody></tbody>
+		  		  <tbody>
+              
+            </tbody>
 			</table>
 			</div>
 			@endif
 		</div>
 	</div>
 </div>
+</section> 
 
 @endsection 
-@section('js') <script type="text/javascript">
+@section('js') 
+<script type="text/javascript">
   @if (!empty($_GET['data']))
   var pas=document.URL
   // alert(pas)
-  $(function() {
+$(function() {
     var table = $('.data-table').DataTable({
       processing: true,
       serverSide: true,
       responsive: true,
-      select: true,
+      autoWidth : false,
       ajax: pas,
       columns: [
-        {data: 'nama',name: 'nama',},
          {data: 'NIK', name: 'NIK'},
-         {data: 'jenis_kelamin', name: 'jenis_kelamin'},
-         {data: 'Alamat', name: 'Alamat'},
-         {data: 'Provinsi', name: 'Provinsi',"visible": false},
-         {data: 'Kabupaten', name: 'Kabupaten',"visible": false},
-         {data: 'Kecamatan', name: 'Kecamatan',"visible": false},
+         {data: 'nama',name: 'nama',},
          {data: 'Kelurahan', name: 'Kelurahan'},
          {data: 'RT', name: 'RT'},
          {data: 'RW', name: 'RW'},
+         {data: 'Alamat', name: 'Alamat'},
+         {data: 'jenis_kelamin', name: 'jenis_kelamin'},
          {data: 'No_Hape', name: 'No_Hape'},
          {data: 'Rekomendasi', name: 'Rekomendasi'},
+         {data: 'Provinsi', name: 'Provinsi',"visible": false},
+         {data: 'Kabupaten', name: 'Kabupaten',"visible": false},
+         {data: 'Kecamatan', name: 'Kecamatan',"visible": false},
          {data: 'email', name: 'email',"visible": false},
          {data: 'Photo_Profile', name: 'Photo_Profile',"visible": true ,searchable: false,orderable: false},
          {data: 'IMG_KTP', name: 'IMG_KTP',"visible": true,searchable: false,orderable: false},
-         {data: 'Status', name: 'Status'},
          {data: 'action', name: 'action',orderable: false,searchable: false},
          ],
     });
