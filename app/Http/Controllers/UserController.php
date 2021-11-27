@@ -155,7 +155,7 @@ class UserController extends Controller
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <a class="btn btn-success" href="/cetak?id='.$row->id.'">Cetak</a>
                             <a class="btn btn-success" href="/resume?id='.$row->id.'">Lihat Data</a>
-                            <a class="btn btn-success" href="/edit?dapil=true&id='.$row->id.'">Buat Dapil</a>
+                            <a class="btn btn-success" href="/edit?&id='.$row->id.'">Ubah Data</a>
                             <a class="btn btn-danger" href="/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
                         </div>';
                       return $btn;
@@ -186,7 +186,7 @@ class UserController extends Controller
 
     public function export() 
     {
-        $bin=['Provinsi','Kabupaten',"Kecamatan","Kelurahan"];
+        $bin=['Provinsi'=>'','Kabupaten'=>'',"Kecamatan"=>'',"Kelurahan"=>''];
         $name='';
         if (!empty($_GET)) {
             $bin=['Provinsi'=>$_GET['Provinsi'],'Kabupaten'=>$_GET['Kabupaten'],"Kecamatan"=>$_GET['Kecamatan'],"Kelurahan"=>$_GET['Kelurahan']];

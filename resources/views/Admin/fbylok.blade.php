@@ -1,4 +1,7 @@
 @extends('Admin.Mazer')
+@section('title')
+    Cari Berdasarkan Lokasi
+@stop
  @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
 <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -126,7 +129,14 @@
     <div class="card-body">
     <div class="row">
       <div class="col-md-6">
-        <h4 class="card-title">Data Anggota Di Seluruh ... </h4>
+        <h4 class="card-title">Data Anggota Di Seluruh <small>@php
+          $txt='';
+          foreach ($bin as $key => $value) {
+            $txt=$txt.' '.$value.',';
+          }
+          echo($txt);
+        @endphp</small>
+         </h4>
         {{-- <p class="card-description"> Add class <code></code> </p>--}}
       </div>
       <div class="col-md-6 text-right">

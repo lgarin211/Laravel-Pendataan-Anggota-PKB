@@ -56,6 +56,7 @@ Route::get('data_users_s', [UserController::class, 'data_users_s'])->name('users
 Route::get('data_users_admin', [UserController::class, 'data_users_admin']);
 
 Route::post('/adduser', [DataAnggotaController::class, 'akun_add']);
+
 Route::get('/Hapus', [DataAnggotaController::class, 'Hapus']);
 
 Route::get('/sand', [DataAnggotaController::class, 'sand']);
@@ -87,7 +88,7 @@ Route::get('/kelengkapandata', function () {
 });
 // Route::get('/kelengkapandata', [DataAnggotaController::class, 'kelengkapandata']);
 Route::post('/kelengkapandata', [DataAnggotaController::class, 'kelengkapandata']);
-
+Route::get('/VAL', [DataAnggotaController::class, 'VAL']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

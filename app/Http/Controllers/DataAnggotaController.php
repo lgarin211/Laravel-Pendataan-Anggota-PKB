@@ -7,9 +7,26 @@ use Illuminate\Support\Facades\DB;
 use DataTables;
 use Illuminate\Http\UploadedFile;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Hash;
 
 class DataAnggotaController extends Controller
 {
+    public function VAL()
+    {
+           if (!empty($_GET)) {
+            $bin=$_GET;
+            $users = DB::table('data_anggotas');
+                foreach ($bin as $key => $item) {
+                    $users=$users->where($key, $item);
+                }
+            if ($users->count()>0) {
+                return response()->json('<p class="text-danger">Data Sudah Ada</p>',200);
+            }else{
+                return response()->json('<p class="text-primary">Data Bisa Di masukan</p>',200);
+            }
+        }
+    }
+
     public function Hapus()
     {
         if (!empty($_GET['table'])&&!empty($_GET['id'])) {
@@ -39,7 +56,7 @@ class DataAnggotaController extends Controller
             $inpad=[
             "name" => $request->nama,
             "email" => $request->email,
-            "password"=>'$2y$10$XtSKTYo9r/oJikFsTvStT.ddQ52psxxhWgTOTgI.vqR8bfx3rptwW',
+            "password"=>Hash::make($request->password),
             ];
             DB::table('users')->insert($inpad);
             return back();
@@ -57,7 +74,6 @@ class DataAnggotaController extends Controller
         $upname=strtotime("now").$file->getClientOriginalName();
         $binval='doc/'.$request->folder.'/'.$upname;
         $file->move($tujuan_upload,$upname);
-
         }else{
         $file = $request->file($request->req);
         $tujuan_upload = 'doc/'.$request->folder.'/';
@@ -97,10 +113,16 @@ class DataAnggotaController extends Controller
             $id=DB::table('users')->where('email',$request->email)->first()->id;
         }
         if(!empty($_POST)) {
+        
+        $cal= DB::table('data_anggotas')->where('NIK',$request->NIK)->count();
+
+        if ($cal>0) {
+            return back()->with('stat','NIK SUDAH TERDAFTAR');
+        }
 
         // dd($request);
         $idauth=$id;
-
+        if ($request->file('Upload_Foto')) {
         $file = $request->file('Upload_Foto');
         $tujuan_upload = 'doc/PP/'.$idauth.'/';
         $upname=strtotime("now").$file->getClientOriginalName();
@@ -112,7 +134,11 @@ class DataAnggotaController extends Controller
         $img->resize(340,226);
         // $file->move($tujuan_upload,$upname);
         $img->save($filePath,100);
+        }else{
+            $Upload_thumFoto='null';
+        }
 
+        if(!empty($request->file('Upload_Foto'))) {
         $file = $request->file('Upload_KTP');
         $tujuan_upload = 'doc/KTP/'.$idauth.'/';
         $upname=strtotime("now").$file->getClientOriginalName();
@@ -123,18 +149,44 @@ class DataAnggotaController extends Controller
         $img->resize(340,226);
         $file->move($tujuan_upload,$upname);
         $img->save($filePath,100);
+        }else{
+            $Upload_thumKTP='null';
+        }
+
+        if (!empty($request->file('KK'))) {
+        $file = $request->file('Upload_Surat_Pernyataan');
+        $tujuan_upload = 'doc/SPT/'.$idauth.'/';
+        $upname=strtotime("now").$file->getClientOriginalName();
+        $KK='doc/SPT/'.$idauth.'/'.$upname;
+        $file->move($tujuan_upload,$upname);
+        }else{
+            $KK='null';
+        }
+
+        if (!empty($request->file('Upload_Surat_Pernyataan'))) {
 
         $file = $request->file('Upload_Surat_Pernyataan');
         $tujuan_upload = 'doc/SPT/'.$idauth.'/';
         $upname=strtotime("now").$file->getClientOriginalName();
         $Upload_Surat_Pernyataan='doc/SPT/'.$idauth.'/'.$upname;
         $file->move($tujuan_upload,$upname);
+        }else{
+            $Upload_Surat_Pernyataan='null';
+        }
 
+
+
+
+
+        if (!empty($request->file('filelainnya'))) {
         $file = $request->file('filelainnya');
         $tujuan_upload = 'doc/OTL/'.$idauth.'/';
         $upname=strtotime("now").$file->getClientOriginalName();
         $filelainnya='doc/OTL/'.$idauth.'/'.$upname;
         $file->move($tujuan_upload,$upname);
+        }else{
+            $filelainnya='null';
+        }
 
         $data=[
           "nama" => $request->nama,
@@ -154,6 +206,7 @@ class DataAnggotaController extends Controller
           "Upload_KTP"=>$Upload_thumKTP,
           "Upload_Surat_Pernyataan"=>$Upload_Surat_Pernyataan,
           "filelainnya"=>$filelainnya,
+          'KK'=>$KK,
           "user_id"=>$id,
           'no_keanggotaan'=>strtotime("now")
         ];
@@ -231,6 +284,18 @@ class DataAnggotaController extends Controller
     }
     public function Fbylok(Request $request)
     {
+        if (!empty($_GET)) {
+            $bin=['Provinsi'=>$_GET['Provinsi'],'Kabupaten'=>$_GET['Kabupaten'],"Kecamatan"=>$_GET['Kecamatan'],"Kelurahan"=>$_GET['Kelurahan']];
+                    if (!empty($bin)) {
+                        foreach ($bin as $key => $item) {
+                            if ($item=="" or $item=="true") {
+                            unset($bin[$key]);
+                            }
+                        }
+                    }
+        }else{
+            $bin=['Provinsi'=>'*','Kabupaten'=>'*',"Kecamatan"=>'*',"Kelurahan"=>'*'];
+        }
         if ($request->ajax()) {
             if (!empty($_GET)) {
                 $bin=['Provinsi'=>$_GET['Provinsi'],'Kabupaten'=>$_GET['Kabupaten'],"Kecamatan"=>$_GET['Kecamatan'],"Kelurahan"=>$_GET['Kelurahan']];
@@ -257,7 +322,7 @@ class DataAnggotaController extends Controller
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <a class="btn btn-success" href="/cetak?id='.$row->id.'">Cetak</a>
                             <a class="btn btn-success" href="/resume?id='.$row->id.'">Lihat Data</a>
-                            <a class="btn btn-success" href="/edit?Dapil=true&id='.$row->id.'">Buat Dapil</a>
+                            <a class="btn btn-success" href="/edit?id='.$row->id.'">Udah Data</a>
                             <a class="btn btn-danger" href="/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
                         </div>';
                       return $btn;
@@ -281,7 +346,7 @@ class DataAnggotaController extends Controller
                     ->make(true);
         }
         $urlren="$_SERVER[REQUEST_URI]";
-        return view('Admin/fbylok',['ren'=>$urlren]);
+        return view('Admin/fbylok',['ren'=>$urlren,'bin'=>$bin]);
     }
 
     public function Fbydapil(Request $request)
@@ -309,7 +374,7 @@ class DataAnggotaController extends Controller
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <a class="btn btn-success" href="/cetak?id='.$row->id.'">Cetak</a>
                             <a class="btn btn-success" href="/resume?id='.$row->id.'">Lihat Data</a>
-                            <a class="btn btn-success" href="/edit?dapil=true&id='.$row->id.'">Buat Dapil</a>
+                            <a class="btn btn-success" href="/edit?&id='.$row->id.'">Ubah Data</a>
                             <a class="btn btn-danger" href="/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
                         </div>';
                       return $btn;

@@ -14,6 +14,7 @@
         border: 1px solid;
       }*/
 
+
       .konten{
         width: 100%;
         height: 100%;
@@ -42,9 +43,16 @@
         text-align: center;
         font-size: 40px;
         margin-top: 10px;
-
       }
-    </style>
+
+</style>
+
+<style type="text/css">
+
+/*      body{
+        background-color: blue !important; 
+      }*/
+</style>
 @endsection
 @section('content')
     <div class="card kartu col-md-12">

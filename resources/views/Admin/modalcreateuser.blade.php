@@ -51,7 +51,11 @@
                                     <div class="col-md-5 col-12 mb-1">
                                         <div class="form-group">
                                             <label for="NIK">NIK</label>
-                                            <input type="number" id="NIK" name="NIK" class="form-control" placeholder="3271..." name="lname-column">
+                                            <input type="number" id="NIK" name="NIK" class="form-control" placeholder="3271..." name="lname-column" oninput="VAL()">
+                                            <div id="KTP-cek">
+
+                                            </div>
+
                                         </div>
                                     </div>
                                     <div class="col-md-2 col-12 mb-1">
@@ -229,6 +233,22 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-12 col-md-12">
+                                        <div class="card border">
+                                            <div class="card-header">
+                                                <h5 class="card-title">Kartu Keluarga</h5>
+                                            </div>
+                                            <div class="card-content">
+                                                <div class="card-body">
+                                                    <p class="card-text">Silahkan Masukan FILE KARTU KELUARGA
+                                                        <code>Format JPG,JPEG,PNG,PDF</code>-.
+                                                    </p>
+                                                    <!-- Auto resize image file uploader -->
+                                                    <input type="file" class="imgPP" id="kk-up" name="KK">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-12 col-md-6">
                                         <div class="card border">
                                             <div class="card-header">
@@ -248,7 +268,7 @@
                                     <div class="col-12 col-md-6">
                                         <div class="card border">
                                             <div class="card-header">
-                                                <h5 class="card-title">Gambar Diri</h5>
+                                                <h5 class="card-title">FILE LAINNYA</h5>
                                             </div>
                                             <div class="card-content">
                                                 <div class="card-body">
@@ -262,7 +282,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1 hia" id="ba" style="display: none;">Submit</button>
                                         <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                     </div>
                                 </div>
@@ -310,7 +330,7 @@
         // filter the image file
         // FilePondPluginImageFilter,
         // corrects mobile image orientation...
-        // FilePondPluginImageExifOrientation,
+        // \FilePondPluginImageExifOrientation,
         // calculates & adds resize information...
         FilePondPluginImageResize,
     );
@@ -403,6 +423,22 @@
   <!-- script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/themes/fas/theme.min.js"></script -->
   <!-- optionally if you need translation for your language then include the locale file as mentioned below (replace LANG.js with your language locale) -->
   <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/js/locales/LANG.js"></script>
+                                              <script type="text/javascript">
+                                                function VAL() {
+                                                    var cas=document.getElementById('NIK').value
+                                                    if (cas.length>15) {
+                                                        fetch('{{url('/VAL')}}?NIK='+cas)
+                                                      .then(response => response.json())
+                                                      .then(data => {
+                                                        document.getElementById('KTP-cek').innerHTML=data
+                                                        if(data=='<p class="text-primary">Data Bisa Di masukan</p>'){
+                                                        document.getElementById('ba').style=''
+                                                        }
+                                                        })
+                                                      .catch(console.error);
+                                                   }
+                                                }
+                                            </script>
   <script type="text/javascript">
    // Optional setup: bootstrap library version will be auto-detected based on the 
    // loaded bootstrap JS library bootstrap.min.js. But if you wish to override the 
@@ -413,6 +449,13 @@
    // $("#input-id").fileinput();
    // with plugin options
    $("#pp-up").fileinput({
+    'showUpload': false,
+    'showCancel': false,
+    'previewFileType': 'any',
+    'showRemove': false,
+    'browseOnZoneClick ': true,
+   });
+   $("#kk-up").fileinput({
     'showUpload': false,
     'showCancel': false,
     'previewFileType': 'any',

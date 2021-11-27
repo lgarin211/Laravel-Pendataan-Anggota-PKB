@@ -98,7 +98,8 @@
                         <tr>
                            <th class="judulnomor">Nomor KTA</th>
                            <th class="isinomor">
-                           {{1122034050000000+$item->no_keanggotaan}}
+                           {{-- {{$item->id}} --}}
+                           {{367105101000023+$item->id}}
                          </th>
                         </tr>
                      </table>
@@ -120,11 +121,16 @@
                            <td class="isi">: {{$item->NIK}}</td>
                         </tr>
                         <tr>
+                           <td class="judul">Tempat/tgl Lahir</td>
+                           {{-- <td class="isi">: {{$item->tmp}}/{{$item->tmt}}</td> --}}
+                           <td class="isi">: {{$item->tmp}}/{{$item->tmt}}</td>
+                        </tr>
+                        <tr>
                            <td class="judul">Alamat</td>
                            <td class="isi">: {{$item->Alamat.' RT '.$item->RT.'/RW '.$item->RW.','.$item->Kelurahan.' '.$item->Kecamatan}}</td>
                         </tr>
                      </table>
-                     <table style="margin-top: 20px;">
+                     <table style="margin-top: 30px;">
                         <tr>
                            <td class="judul">Berlaku Sejak</td>
                            <td class="isi">: {{date('d-m-Y')}}</td>

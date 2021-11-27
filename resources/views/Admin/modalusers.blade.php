@@ -19,11 +19,17 @@
        				</p>
 				</div>
 				<div class="col-md-12">
-					<h6>Email</h6>
-       				<p>
-        			<input required class="form-control" placeholder="lagus@l.om" name="email" @if(!empty($data->nama)) value="{{$data->nama}}" @endif>
-       				</p>
-				</div>
+          <h6>Email</h6>
+              <p>
+              <input required class="form-control" placeholder="lagus@l.om" name="email" @if(!empty($data->nama)) value="{{$data->nama}}" @endif>
+              </p>
+        </div>
+        <div class="col-md-12">
+          <h6>Kata sandi</h6>
+              <p>
+              <input required class="form-control" type="password" name="password" >
+              </p>
+        </div>
 			</div>
 		</div>
       </div>

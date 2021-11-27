@@ -4,7 +4,7 @@
             <div class="d-flex justify-content-between">
               <div class="logo">
                 <a href="/">
-                  <img src="{{url('/')}}/PKB/LOGOPKB.png" alt="Logo" style="min-width: 150px; min-height: 150px;" srcset="">
+                  <img src="{{url('/')}}/PKB/LOGOPKB.png" alt="Logo" style="min-width: 200px; min-height: 200px;" srcset="">
                 </a>
               </div>
               <div class="toggler">
@@ -41,9 +41,6 @@
                   </li>
                   <li class="submenu-item ">
                     <a href="{{url('/Fbylok')}}">Filter Dari Lokasi</a>
-                  </li>
-                  <li class="submenu-item ">
-                    <a href="{{url('/Fbydapil')}}">Filter Dari Dapil</a>
                   </li>
                 </ul>
               </li>

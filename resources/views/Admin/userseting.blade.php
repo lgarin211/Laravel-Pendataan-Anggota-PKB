@@ -1,4 +1,7 @@
 @extends('Admin.Mazer')
+@section('title')
+    Pembuatan Data User
+@stop
  @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
 {{-- <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet"> --}}
@@ -28,9 +31,6 @@
       <div class="col-md-6 text-right">
         <h4 class="card-title">Export Data</h4>
         <a href="{{url('/')}}/users/export/" target="_blank" class="btn btn-success mb-1 mt-1">expord</a>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Buat Data Anggota
-        </button>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ArdaAdduser">
           Buat Akun User
@@ -52,7 +52,7 @@
 </div>
 </section>
 <!-- Modal -->
-@include('Admin.modaladduser')
+{{-- @include('Admin.modaladduser') --}}
 @include('Admin.modalusers')
 @endsection 
 @section('js') 

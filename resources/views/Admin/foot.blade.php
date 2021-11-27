@@ -1,4 +1,4 @@
-          <!-- partial:{{url('Template1')}}/partials/_footer.html -->
+{{--           <!-- partial:{{url('Template1')}}/partials/_footer.html -->
           <footer class="footer">
             <div class="container-fluid clearfix">
               <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © PKB 2021</span>
@@ -40,3 +40,4 @@
     'browseOnZoneClick ': true,
    });
   </script>
+ --}}

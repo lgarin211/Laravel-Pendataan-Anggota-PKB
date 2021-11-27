@@ -1,4 +1,7 @@
 @extends('Admin.Mazer')
+@section('title')
+    Dashboard
+@stop
 @section('css')
 {{-- <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet"> --}}
 {{-- <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet"> --}}
@@ -137,21 +140,22 @@ $nav['provinsi']=DB::table('data_anggotas')->select('Provinsi')->select('Provins
 
 </section>
 {{-- users --}}
+@if (auth()->user()->role=="user")
 <section class="section"> 
 <div class="card">
   <div class="card-body">
     <div class="row">
       <div class="col-md-6">
-        <h4 class="card-title">Data Seluruh Anggota</h4>
+        <h4 class="card-title">Data Anggota</h4>
         {{-- <p class="card-description"> Add class <code></code> --}}
         </p>
       </div>
-      <div class="col-md-6 text-right">
+      <div class="col-md-4"></div>
+      <div class="col-md-2  float-end">
         <h4 class="card-title">Aksi</h4>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#anggotaadd">
           Daftarkan Anggota
         </button>
-        <a href="{{url('/')}}/users/export/" target="_blank" class="btn btn-success mb-1 mt-1">expord</a>
       </div>
     </div>
     <table class="table table-striped data-table table-responsive">
@@ -172,38 +176,6 @@ $nav['provinsi']=DB::table('data_anggotas')->select('Provinsi')->select('Provins
           <th>email</th>
           <th>Photo Profile</th>
           <th>IMG KTP</th>
-          <th width="100px">Aksi</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
-</div>
-</section>
-@if (auth()->user()->role=="Admin")
-<section class="section"> 
-<div class="card col-md-6">
-  <div class="card-body">
-    <div class="row">
-      <div class="col-md-6">
-        <h4 class="card-title">Data User </h4>
-        {{-- <p class="card-description"> Add class <code></code> --}}
-        </p>
-      </div>
-      <div class="col-md-6 text-right">
-        <h4 class="card-title">Aksi</h4>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#anggotaadd">
-          Daftarkan Anggota
-        </button>
-        <a href="{{url('/')}}/users/export/" target="_blank" class="btn btn-success mb-1 mt-1">expord</a>
-      </div>
-    </div>
-    <table class="table table-striped data-table-admin table-responsive">
-      <thead>
-        <tr>
-          <th>NAMA</th>
-          <th>email</th>
-          <th>Total Data</th>
           <th width="100px">Aksi</th>
         </tr>
       </thead>
@@ -243,22 +215,6 @@ $nav['provinsi']=DB::table('data_anggotas')->select('Provinsi')->select('Provins
          ],
     });
   });
-@if (auth()->user()->role=="Admin")
-    $(function() {
-    var table = $('.data-table-admin').DataTable({
-      processing: true,
-      serverSide: true,
-      responsive: true,
-      autoWidth : false,
-      ajax: "{{ url('data_users_admin') }}",
-      columns: [
-         {data: 'nama',name: 'nama',},
-         {data: 'email', name: 'email',"visible": true},
-         {data: 'DataUser', name: 'DataUser',orderable: true,searchable: false},
-         ],
-    });
-  });
-@endif
 </script>
 
 @include('Admin/modalcreateuser')
