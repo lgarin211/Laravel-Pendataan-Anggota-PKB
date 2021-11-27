@@ -68,6 +68,7 @@
     </style>
 @endsection
 @section('content')
+<section >
     <div class="card kartu">
       <h3 class="h">RESUME PENDAFTARAN</h3>
       <div class="container konten">
@@ -314,4 +315,6 @@
                         </div>
                       </div>
                     </div>
+</div>
+</section>
 @endsection
