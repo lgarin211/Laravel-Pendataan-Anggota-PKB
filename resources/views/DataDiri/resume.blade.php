@@ -11,8 +11,8 @@
 */
       .kartu{
         margin: 20px;
-        width: 100vh;
-        height: 110vh;
+        width: 100vw;
+        height: 150vh;
         border: 1px solid;
       }
 
