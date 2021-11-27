@@ -128,8 +128,8 @@
                         <tr>
                            <td class="judul">Alamat</td>
                            <td class="isi">: 
-
-                              {{$item->Alamat.}}
+                              {{-- {{$item->Alamat.' RT '.$item->RT.'/RW '.$item->RW.','.$item->Kelurahan.' '.$item->Kecamatan}} --}}
+                              {{$item->Alamat}}
                            </td>
                         </tr>
                      </table>
