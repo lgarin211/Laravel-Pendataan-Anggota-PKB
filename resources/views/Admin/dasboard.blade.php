@@ -1,3 +1,4 @@
+
 @extends('Admin.Mazer')
 @section('title')
 <?php
@@ -156,23 +157,23 @@ $nav['provinsi']=DB::table('data_anggotas')->select('Provinsi')->select('Provins
 		        </div>
 		    </div>
 
-		    <div class="col-6 col-lg-3 col-md-6" data-bs-toggle="modal" data-bs-target="#anggotaadd">
+{{-- 		    <div class="col-6 col-lg-3 col-md-6" data-bs-toggle="modal" data-bs-target="#anggotaadd">
 		        <div class="card">
-		            <div class="card-body px-3 py-4-5">
-		                <div class="row">
+		            <div class="card-body px-3 py-4-5 btn btn-primary">
+		                <div class="row ">
 		                    <div class="col-md-4">
 		                        <div class="stats-icon blue">
 		                            <i class="iconly-boldProfile"></i>
 		                        </div>
 		                    </div>
 		                    <div class="col-md-8">
-		                        <h6 class="text-muted font-semibold">Input Data</h6>
-		                        <h6 class="font-extrabold mb-0">click here</h6>
+		                        <h6 class="text-muted font-semibold text-light">Input Data</h6>
+		                        <h6 class="font-extrabold mb-0 text-light">click here</h6>
 		                    </div>
 		                </div>
 		            </div>
 		        </div>
-		    </div>
+		    </div> --}}
             @endif
 		</div>
 
