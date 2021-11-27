@@ -141,7 +141,7 @@
       </div>
       <div class="col-md-6 text-right">
         <h4 class="card-title">Export Data</h4>
-        <a href="{{url('/')}}/dapil/export?{{$ren}}" target="_blank" class="btn btn-success mb-1 mt-1">expord</a>
+        <a href="{{url('/')}}/users/export/?{{$ren}}" target="_blank" class="btn btn-success mb-1 mt-1">expord</a>
         <a href="{{url('/')}}/cetak?{{$ren}}" target="_blank" class="btn btn-success mb-1 mt-1">Cetak</a>
       </div>
     </div>

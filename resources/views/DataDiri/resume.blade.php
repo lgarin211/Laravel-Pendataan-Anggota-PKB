@@ -12,8 +12,8 @@
       .kartu{
         margin: 20px;
         width: 100vw;
-        height: 150vh;
-        border: 1px solid;
+        height: 120vh;
+        /*border: 0px solid;*/
       }
 
       .konten{
@@ -49,10 +49,12 @@
 
       }
 
-
       @media only screen and (max-width: 500px) {
       html {
         zoom: .5;
+      }
+      .kartu{
+        width: 120vw;
       }
 
       .lihat{
@@ -68,7 +70,6 @@
     </style>
 @endsection
 @section('content')
-<section class="card">
     <div class="card kartu">
       <h3 class="h">RESUME PENDAFTARAN</h3>
       <div class="container konten">
@@ -76,9 +77,8 @@
           <div class="col-3">
             <img class="profil" src="{{url($data->Upload_Foto)}}" style="max-width:200px;">
           </div>
-          <div class="col-9">
-             
-  			<table class="badan">
+        <div class="col-9">
+    			<table class="badan">
                   <tr>
                     <td class="judul">Nama Lengkap</td>
                     <td>  :  </td>
@@ -163,9 +163,9 @@
                     <td class="isi">{{$data->Rekomendasi}}</td>
                     <td class="isi"></td>
                   </tr>
-                </table>
+          </table>
 
-				<table class="table mt-1">
+				  <table class="table mt-1">
                   <tr>
                     <td>Data Yang Diunggah</td>
                   </tr>
@@ -180,7 +180,6 @@
                   </tr>
                   <tr id="gktp" style="display: none;">
                   </tr>
-
                   <tr id="surat">
                     <td class="row">
                       <div class="col-md-3">Surat Pernyataan</div>
@@ -190,7 +189,6 @@
                     </div>
                     </td>
                   </tr>
-
                   <tr id="surat">
                     <td class="row">
                       <div class="col-md-3">Kartu Keluarga</div>
@@ -200,8 +198,6 @@
                     </div>
                     </td>
                   </tr>
-
-
                   <tr id="file">
                     <td class="row">
                       <div class="col-md-3">File Lainnya  </div>
@@ -211,12 +207,19 @@
                     </div>
                     </td>
                   </tr>
-                </table>
+                  </tr>
+                  <tr id="file">
+                    <td class="row">
+                      <div class="col-md-3">Print Data  </div>
+                      <div class="col-md-9">
+                        <a class="btn btn-primary" href="/presume?id={{$_GET['id']}}" target="_blank"  style="margin-left: 200px;">
+                        Print
+                      </a>
+                    </div>
+                    </td>
+                  </tr>
+          </table>
           </div>
-
-
-      </div>
-    </div>
 @endsection
 @section('js')
      {{-- Modal --}}
@@ -251,6 +254,7 @@
                           <div class="modal-content">
                             <div class="modal-header">
                               <h5 class="modal-title" id="ModalSPLabel">File Surat Pernyataan</h5>
+                 
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">

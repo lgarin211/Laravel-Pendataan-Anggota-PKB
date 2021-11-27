@@ -24,13 +24,13 @@
   <div class="card-body">
     <div class="row">
       <div class="col-md-6">
-        <h4 class="card-title">Data Anggota Di Seluruh Indonesia</h4>
+        <h4 class="card-title">Data User</h4>
         {{-- <p class="card-description"> Add class <code></code> --}}
         </p>
       </div>
       <div class="col-md-6 text-right">
-        <h4 class="card-title">Export Data</h4>
-        <a href="{{url('/')}}/users/export/" target="_blank" class="btn btn-success mb-1 mt-1">expord</a>
+        {{-- <h4 class="card-title">Export Data</h4> --}}
+        {{-- <a href="{{url('/')}}/users/export/" target="_blank" class="btn btn-success mb-1 mt-1">expord</a> --}}
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ArdaAdduser">
           Buat Akun User

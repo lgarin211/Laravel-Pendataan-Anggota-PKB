@@ -1,6 +1,26 @@
 @extends('Admin.Mazer')
 @section('title')
-    Dashboard
+<?php
+//ubah timezone menjadi jakarta
+date_default_timezone_set("Asia/Jakarta");
+
+//ambil jam dan menit
+$jam = date('H:i');
+
+//atur salam menggunakan IF
+if ($jam > '05:30' && $jam < '10:00') {
+    $salam = 'Pagi';
+} elseif ($jam >= '10:00' && $jam < '15:00') {
+    $salam = 'Siang';
+} elseif ($jam < '18:00') {
+    $salam = 'Sore';
+} else {
+    $salam = 'Malam';
+}
+?>
+<span class="text-center">
+{{'Selamat ' . $salam.' '.auth()->user()->role.' '.auth()->user()->name}}
+</span>
 @stop
 @section('css')
 {{-- <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet"> --}}
@@ -135,6 +155,24 @@ $nav['provinsi']=DB::table('data_anggotas')->select('Provinsi')->select('Provins
 		            </div>
 		        </div>
 		    </div>
+
+		    <div class="col-6 col-lg-3 col-md-6" data-bs-toggle="modal" data-bs-target="#anggotaadd">
+		        <div class="card">
+		            <div class="card-body px-3 py-4-5">
+		                <div class="row">
+		                    <div class="col-md-4">
+		                        <div class="stats-icon blue">
+		                            <i class="iconly-boldProfile"></i>
+		                        </div>
+		                    </div>
+		                    <div class="col-md-8">
+		                        <h6 class="text-muted font-semibold">Input Data</h6>
+		                        <h6 class="font-extrabold mb-0">click here</h6>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
             @endif
 		</div>
 
@@ -150,11 +188,11 @@ $nav['provinsi']=DB::table('data_anggotas')->select('Provinsi')->select('Provins
         {{-- <p class="card-description"> Add class <code></code> --}}
         </p>
       </div>
-      <div class="col-md-4"></div>
-      <div class="col-md-2  float-end">
-        <h4 class="card-title">Aksi</h4>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#anggotaadd">
-          Daftarkan Anggota
+      <div class="col-md-3"></div>
+      <div class="col-md-3 float-end">
+        {{-- <h4 class="card-title">Aksi</h4> --}}
+        <button type="button" class="btn btn-primary col-md-10 float-end" data-bs-toggle="modal" data-bs-target="#anggotaadd">
+          Input Data
         </button>
       </div>
     </div>

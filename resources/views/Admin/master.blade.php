@@ -21,14 +21,14 @@
   <div class="card-body">
     <div class="row">
       <div class="col-md-6">
-        <h4 class="card-title">Data Anggota Di Seluruh Indonesia</h4>
+        <h4 class="card-title">Data Anggota</h4>
         {{-- <p class="card-description"> Add class <code></code> --}}
         </p>
       </div>
       <div class="col-md-6 text-right">
-        <h4 class="card-title">Aksi</h4>
+{{--         <h4 class="card-title">Aksi</h4> --}}
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#anggotaadd">
-          Daftarkan Anggota
+          Input Data
         </button>
 {{--         <a href="{{url('/')}}/users/export/" target="_blank" class="btn btn-success mb-1 mt-1">expord</a> --}}
       </div>
