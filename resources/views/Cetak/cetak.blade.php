@@ -127,10 +127,13 @@
                         </tr>
                         <tr>
                            <td class="judul">Alamat</td>
-                           <td class="isi">: {{$item->Alamat.' RT '.$item->RT.'/RW '.$item->RW.','.$item->Kelurahan.' '.$item->Kecamatan}}</td>
+                           <td class="isi">: 
+                              {{-- {{$item->Alamat.' RT '.$item->RT.'/RW '.$item->RW.','.$item->Kelurahan.' '.$item->Kecamatan}} --}}
+                              {{$item->Alamat.}}
+                           </td>
                         </tr>
                      </table>
-                     <table style="margin-top: 30px;">
+                     <table style="margin-top: 40px;">
                         <tr>
                            <td class="judul">Berlaku Sejak</td>
                            <td class="isi">: {{date('d-m-Y')}}</td>
