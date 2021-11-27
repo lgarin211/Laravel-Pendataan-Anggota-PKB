@@ -30,7 +30,7 @@
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#anggotaadd">
           Daftarkan Anggota
         </button>
-        <a href="{{url('/')}}/users/export/" target="_blank" class="btn btn-success mb-1 mt-1">expord</a>
+{{--         <a href="{{url('/')}}/users/export/" target="_blank" class="btn btn-success mb-1 mt-1">expord</a> --}}
       </div>
     </div>
     <table class="table table-striped data-table table-responsive">

@@ -53,7 +53,7 @@
                                             <label for="NIK">NIK</label>
                                             <input type="number" id="NIK" name="NIK" class="form-control" placeholder="3271..." name="lname-column" oninput="VAL()">
                                             <div id="KTP-cek">
-
+                                                masukan 16 digit NIK
                                             </div>
 
                                         </div>
@@ -65,6 +65,18 @@
                                                 <option value="Anggota">Anggota</option>
                                                 <option value="Pengurus">Pengurus</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="">Tempat Lahir</label>
+                                            <input class="form-control" required type="text" name="tmp">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="">Tanggal Lahir</label>
+                                            <input class="form-control" required  type="date" name="tmt">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12 mb-1">

@@ -191,6 +191,8 @@ class DataAnggotaController extends Controller
         $data=[
           "nama" => $request->nama,
           "NIK" => $request->NIK,
+          "tmp" => $request->tmp,
+          "tmt" => $request->tmt,
           "jenis_kelamin" => $request->jenis_kelamin,
           "Provinsi" => $request->Provinsi,
           "Kabupaten" => $request->Kabupaten,

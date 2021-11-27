@@ -40,6 +40,21 @@ Route::get('/resume', function () {
     // return redirect('login');
 });
 
+Route::get('/presume', function () {
+    if ($_GET['id']) {
+    $data=DB::table('data_anggotas')->where('id',$_GET['id'])->first();
+    if (!empty($data)) {
+        return view('DataDiri/presume',['data'=>$data]);
+        }else{
+            return redirect('/dashboard');
+        }
+    }else{
+        return redirect('/ard');
+    }
+
+    // return redirect('login');
+});
+
 Route::get('/ard', function () {
     if (auth()->user()->role=='Admin') {
         return redirect('/');

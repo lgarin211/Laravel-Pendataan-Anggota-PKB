@@ -28,9 +28,9 @@
           </div>
 @yield('content')
         </div>
-        <footer>
+        <footer class="fixed-bottom">
           <div class="footer clearfix mb-0 text-muted">
-            <div class="float-start">
+            <div class="text-center">
               <p>2021 &copy; Partai Kebangkitan Bangsa</p>
             </div>
 {{--             <div class="float-end">
