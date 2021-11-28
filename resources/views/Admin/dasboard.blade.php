@@ -156,7 +156,6 @@ $nav['provinsi']=DB::table('data_anggotas')->select('Provinsi')->select('Provins
 		            </div>
 		        </div>
 		    </div>
-
 {{-- 		    <div class="col-6 col-lg-3 col-md-6" data-bs-toggle="modal" data-bs-target="#anggotaadd">
 		        <div class="card">
 		            <div class="card-body px-3 py-4-5 btn btn-primary">

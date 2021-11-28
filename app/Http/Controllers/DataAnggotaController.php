@@ -68,13 +68,15 @@ class DataAnggotaController extends Controller
     public function pasfile(Request $request)
     {
         // dd($_POST);
-        if ($request->req!='Upload_KTP') {
+        if (($request->req!='Upload_KTP') and ($request->req!='Upload_Foto')) {
+        // dd('efe1');
         $file = $request->file($request->req);
         $tujuan_upload = 'doc/'.$request->folder.'/';
         $upname=strtotime("now").$file->getClientOriginalName();
         $binval='doc/'.$request->folder.'/'.$upname;
         $file->move($tujuan_upload,$upname);
         }else{
+        // dd('efe3');
         $file = $request->file($request->req);
         $tujuan_upload = 'doc/'.$request->folder.'/';
         $upname=strtotime("now").$file->getClientOriginalName();

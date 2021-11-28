@@ -74,11 +74,19 @@
             <img class="rounded-circle mt-5" src="{{url($data->Upload_Foto)}}" style="max-width:150px;">
             <span class="font-weight-bold">{{$data->nama}}</span><span class="text-black-50">{{$data->Status}}</span>
             <span>
-
             </span>
           </div>
             <br>
             <div class="row">
+              <div class="col-md-12 mb-4">
+                <h6>Photo Profile</h6>
+                <iframe src="{{url($data->Upload_Foto)}}" class="col-md-12"class="ratio" allowfullscreen></iframe>
+                <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-success col-md-12" data-bs-toggle="modal" data-bs-target="#ModalPP">
+                      Lihat File
+                    </button>
+              </div>
+              <br>
               <div class="col-md-12 mb-4">
                 <h6>Foto KTP</h6>
                 <iframe src="{{url($data->Upload_KTP)}}" class="col-md-12" class="ratio" allowfullscreen></iframe>
@@ -99,6 +107,15 @@
               </div>
               <br>
               <div class="col-md-12 mb-4">
+                <h6>File Kartu Keluarga</h6>
+                <iframe src="{{url($data->KK)}}" class="col-md-12"class="ratio" allowfullscreen></iframe>
+                <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-success col-md-12" data-bs-toggle="modal" data-bs-target="#ModalKK">
+                      Lihat File
+                    </button>
+              </div>
+              <br>
+              <div class="col-md-12 mb-4">
                 <h6>File lainnya</h6>
                 <iframe src="{{url($data->filelainnya)}}" class="col-md-12"class="ratio" allowfullscreen></iframe>
                 <!-- Button trigger modal -->
@@ -106,9 +123,10 @@
                       Lihat File
                     </button>
               </div>
+
             </div>
         </div>
-        <div class="col-md-4 border-right shadow-sm p-3 mb-5 bg-body">
+        <div class="col-md-7 border-right shadow-sm p-3 mb-5 bg-body">
           <div class="p-3 py-5">
             <div class="d-flex justify-content-between align-items-center mb-3">
               <h4 class="text-right">Profile Settings</h4>
@@ -136,7 +154,7 @@
               <div class="col-md-12">
                 <h6>Provinsi</h6>
                 <p><select class="form-select" name="Provinsi" id="Provinsi" onchange="gokob()">  
-                  <option value="" selected>Pilih Provinsi</option></select>
+                  @if(!empty($data->Kabupaten)) <option value="{{$data->Provinsi}}" selected>{{$data->Provinsi}}</option> @endif </select>
                   <script type="text/javascript">
                     fetch(`http://www.emsifa.com/api-wilayah-indonesia/api/provinces.json`).then(response => response.json()).then(provinces => {
                       provinces = provinces.reverse()
@@ -151,7 +169,8 @@
                     });
                   </script>
                 <h6>Kota/Kab</h6>
-                <p><select class="form-select" name="Kabupaten" id="kob" onchange="gokec()"> @if(!empty($data->Kabupaten)) <option value="{{$data->Kabupaten}}" selected>{{$data->Kabupaten}}</option> @endif </select>
+                <p>
+                  <select class="form-select" name="Kabupaten" id="kob" onchange="gokec()"> @if(!empty($data->Kabupaten)) <option value="{{$data->Kabupaten}}" selected>{{$data->Kabupaten}}</option> @endif </select>
                   <script type="text/javascript">
                     function gokob() {
                       document.getElementById('kob').innerHTML = `<option value="" selected>Harap Pilih Lokasi</option>`
@@ -242,7 +261,7 @@
           </div>
         </div>
   </form>
-        <div class="col-md-3 mt-5 shadow-sm p-3 mb-5 bg-body">
+        <div class="col-md-12 mt-5 shadow-sm p-3 mb-5 bg-body">
           @if (!empty($_GET['dapil']))
           <h4>Data Pemilihan Sipil</h4>
           <div class="col-md-12 mt-4">
@@ -411,6 +430,12 @@
         'showRemove': false,
         'browseOnZoneClick ': true,
       });
+      $("#kk-up").fileinput({
+        'showUpload': false,
+        'previewFileType': 'any',
+        'showRemove': false,
+        'browseOnZoneClick ': true,
+      });
     </script>
      {{-- Modal --}}
                     <!-- Modal -->
@@ -424,7 +449,7 @@
                         <div class="modal-dialog modal-xl">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="ModalKTPLabel">File Surat Pernyataan</h5>
+                              <h5 class="modal-title" id="ModalKTPLabel">File KTP</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -507,6 +532,76 @@
                               <div class="col-md-6">
                                 <h4>Udah Dengan</h4>
                                     <input id="lny-up" type="file" class="file" data-preview-file-type="text" name="filelainnya">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success col-md-12">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </form>
+
+                                        <!-- Modal -->
+                    <form action="/pasfile" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="folder" value="SPT/{{$data->user_id}}">
+                      <input type="hidden" name="id" value="{{$data->id}}">
+                      @csrf
+                      <input type="hidden" name="req" value="KK">
+                    <div class="modal fade" id="ModalKK" tabindex="-1" aria-labelledby="ModalFLLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="ModalFLLabel">File Kartu Keluarga</h5>
+                          </div>
+                          <div class="modal-body">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <h4>File Saat Ini</h4>
+                                <div>                                    
+                                  <iframe src="{{url($data->KK)}}" class="col-md-12" style="height: 50vh;" class="ratio" allowfullscreen></iframe>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <h4>Udah Dengan</h4>
+                                    <input id="kk-up" type="file" class="file" data-preview-file-type="text" name="KK">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success col-md-12">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </form>
+
+                                                            <!-- Modal -->
+                    <form action="/pasfile" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="folder" value="PP/{{$data->user_id}}">
+                      <input type="hidden" name="id" value="{{$data->id}}">
+                      @csrf
+                      <input type="hidden" name="req" value="Upload_Foto">
+                    <div class="modal fade" id="ModalPP" tabindex="-1" aria-labelledby="ModalFLLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="ModalFLLabel">File Photo Profile</h5>
+                          </div>
+                          <div class="modal-body">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <h4>File Saat Ini</h4>
+                                <div>                                    
+                                  <iframe src="{{url($data->Upload_Foto)}}" class="col-md-12" style="height: 50vh;" class="ratio" allowfullscreen></iframe>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <h4>Udah Dengan</h4>
+                                    <input id="pp-up" type="file" class="file" data-preview-file-type="text" name="Upload_Foto">
                               </div>
                             </div>
                           </div>

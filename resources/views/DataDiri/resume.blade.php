@@ -54,7 +54,7 @@
         zoom: .5;
       }
       .kartu{
-        width: 120vw;
+        width: 150vw;
       }
 
       .lihat{
@@ -173,7 +173,7 @@
                     <td class="row">
                       <div class="col-md-3">Foto KTP</div>
                       <div class="col-md-9"><button type="button" class="btn btn-success" data-bs-toggle="modal" style="margin-left: 200px;" data-bs-target="#ModalKTP">
-                      Lihat File
+                      Lihat 
                       </button>
                     </div>
                     </td>
@@ -184,7 +184,7 @@
                     <td class="row">
                       <div class="col-md-3">Surat Pernyataan</div>
                       <div class="col-md-9"><button type="button" class="btn btn-success" data-bs-toggle="modal" style="margin-left: 200px;" data-bs-target="#ModalSP">
-                      Lihat File
+                      Lihat 
                       </button>
                     </div>
                     </td>
@@ -193,7 +193,7 @@
                     <td class="row">
                       <div class="col-md-3">Kartu Keluarga</div>
                       <div class="col-md-9"><button type="button" class="btn btn-success" data-bs-toggle="modal" style="margin-left: 200px;" data-bs-target="#ModalKK">
-                      Lihat File
+                      Lihat 
                       </button>
                     </div>
                     </td>
@@ -202,7 +202,7 @@
                     <td class="row">
                       <div class="col-md-3">File Lainnya  </div>
                       <div class="col-md-9"><button type="button" class="btn btn-success" data-bs-toggle="modal" style="margin-left: 200px;" data-bs-target="#ModalFL">
-                      Lihat File
+                      Lihat 
                       </button>
                     </div>
                     </td>
