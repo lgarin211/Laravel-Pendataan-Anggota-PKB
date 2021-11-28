@@ -106,7 +106,7 @@
                   <tr>
                     <td class="judul">Provinsi</td>
                     <td>  :  </td>
-                    <td class="isi">{{$data->Provinsi}}</td>
+                    <td class="isi">{{dump($data->Provinsi)}}</td>
                     <td class="isi"></td>
                   </tr>
                   <tr>

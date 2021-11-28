@@ -134,9 +134,9 @@
             <div class="row mt-4">
               <div class="col-md-12">
                 <h6>Nama Lengkap</h6>
-                <p><input class="form-control" placeholder="Nama..." oninput="this.className = ''" name="nama" @if(!empty($data->nama)) value="{{$data->nama}}" @endif></p>
+                <p><input class="form-control" placeholder="Nama..."  name="nama" @if(!empty($data->nama)) value="{{$data->nama}}" @endif></p>
                 <h6>NIK</h6>
-                <p><input class="form-control" placeholder="3271..." oninput="this.className = ''" name="NIK" @if(!empty($data->NIK)) value="{{$data->NIK}}" @endif></p>
+                <p><input class="form-control" placeholder="3271..."  name="NIK" @if(!empty($data->NIK)) value="{{$data->NIK}}" @endif></p>
 
                 <h6>Status</h6>
                   <select name="Status" class="form-select ">
@@ -237,22 +237,22 @@
                 </p>
                 <div class="col-md-12">
                   <h6>RT</h6>
-                  <p><input class="form-control" placeholder="001 " oninput="this.className = ''" name="RT" @if(!empty($data->RT)) value="{{$data->RT}}" @endif></p>
+                  <p><input class="form-control" placeholder="001 "  name="RT" @if(!empty($data->RT)) value="{{$data->RT}}" @endif></p>
                   <h6>RW</h6>
-                  <p><input class="form-control" placeholder="001" oninput="this.className = ''" name="RW" @if(!empty($data->RW)) value="{{$data->RW}}" @endif></p>
+                  <p><input class="form-control" placeholder="001"  name="RW" @if(!empty($data->RW)) value="{{$data->RW}}" @endif></p>
                 </div>
                 <h6>Alamat Lengkap</h6>
-                <p><textarea class='form-control col-md-12' oninput="this.className = ''" name="Alamat">@if(!empty($data->NIK)){{$data->Alamat}}@endif</textarea></p>
+                <p><textarea class='form-control col-md-12'  name="Alamat">@if(!empty($data->NIK)){{$data->Alamat}}@endif</textarea></p>
               </div>
               <div class="col-md-12">
                 <h6>Email</h6>
-                <p><input class="form-control" placeholder="expel@exm.com" oninput="this.className = ''" name="email" type="email" @if(!empty($data->email)) value="{{$data->email}}" @endif></p>
+                <p><input class="form-control" placeholder="expel@exm.com"  name="email" type="email" @if(!empty($data->email)) value="{{$data->email}}" @endif></p>
                 <h6>Nomor Handphone</h6>
-                <p><input class="form-control" placeholder="08xxxxxxxx" oninput="this.className = ''" name="No_Hape" type="number" @if(!empty($data->No_Hape)) value="{{$data->No_Hape}}" @endif></p>
+                <p><input class="form-control" placeholder="08xxxxxxxx"  name="No_Hape" type="number" @if(!empty($data->No_Hape)) value="{{$data->No_Hape}}" @endif></p>
               </div>
               <div class="col-md-12">
                 <h6>Rekomendasi</h6>
-                <p><input class="form-control" placeholder="Favourite car" oninput="this.className = ''" name="Rekomendasi" @if(!empty($data->Rekomendasi)) value="{{$data->Rekomendasi}}" @endif></p>
+                <p><input class="form-control" placeholder="Favourite car"  name="Rekomendasi" @if(!empty($data->Rekomendasi)) value="{{$data->Rekomendasi}}" @endif></p>
               </div>
               <div class="mt-5 text-center">
                 <button class="btn btn-success col-md-12" type="submit">Save Profile</button>
