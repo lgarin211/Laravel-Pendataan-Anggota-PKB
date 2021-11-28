@@ -156,15 +156,15 @@ class DataAnggotaController extends Controller
         }
 
         if (!empty($request->file('KK'))) {
-        $file = $request->file('Upload_Surat_Pernyataan');
+        $file = $request->file('KK');
         $tujuan_upload = 'doc/SPT/'.$idauth.'/';
         $upname=strtotime("now").$file->getClientOriginalName();
         $KK='doc/SPT/'.$idauth.'/'.$upname;
         $file->move($tujuan_upload,$upname);
+
         }else{
             $KK='null';
         }
-
         if (!empty($request->file('Upload_Surat_Pernyataan'))) {
 
         $file = $request->file('Upload_Surat_Pernyataan');
