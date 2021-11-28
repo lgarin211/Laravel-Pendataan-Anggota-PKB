@@ -43,9 +43,9 @@ class UserController extends Controller
                     ->addColumn('action', function($row){
                         $btn='
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a class="btn btn-success" href="/sand?id='.$row->id.'" >Reset Sandi</a>
-                            <a class="btn btn-success" href="/Adminkan?id='.$row->id.'">Adminkan</a>
-                            <a class="btn btn-danger" href="/Hapus?table=users&id='.$row->id.'">Hapus Data</a>
+                            <a class="btn btn-success" href="'.url('/').'/sand?id='.$row->id.'" >Reset Sandi</a>
+                            <a class="btn btn-success" href="'.url('/').'/Adminkan?id='.$row->id.'">Adminkan</a>
+                            <a class="btn btn-danger" href="'.url('/').'/Hapus?table=users&id='.$row->id.'">Hapus Data</a>
                         </div>
                         ';
                     return $btn;
@@ -53,8 +53,8 @@ class UserController extends Controller
                     ->addColumn('Cetak', function ($row) {
                         $btn='
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a class="btn btn-success" href="/sand?id='.$row->id.'" onclick("alert(`Sandi Sudah Di ubah`)")>Reset Sandi</a>
-                            <a class="btn btn-danger" href="/Hapus?table=users&id='.$row->id.'">Hapus Data</a>
+                            <a class="btn btn-success" href="'.url('/').'/sand?id='.$row->id.'" onclick("alert(`Sandi Sudah Di ubah`)")>Reset Sandi</a>
+                            <a class="btn btn-danger" href="'.url('/').'/Hapus?table=users&id='.$row->id.'">Hapus Data</a>
                         </div>
                         ';
                     return $btn;
@@ -83,23 +83,23 @@ class UserController extends Controller
                     ->addColumn('action', function($row){
                       $btn = '
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a class="btn btn-success" href="/cetak?id='.$row->id.'">Cetak</a>
-                            <a class="btn btn-success" href="/resume?id='.$row->id.'">Lihat Data</a>
-                            <a class="btn btn-success" href="/edit?id='.$row->id.'">Edit</a>
-                            <a class="btn btn-danger" href="/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
+                            <a class="btn btn-success" href="'.url('/').'/cetak?id='.$row->id.'">Cetak</a>
+                            <a class="btn btn-success" href="'.url('/').'/resume?id='.$row->id.'">Lihat Data</a>
+                            <a class="btn btn-success" href="'.url('/').'/edit?id='.$row->id.'">Edit</a>
+                            <a class="btn btn-danger" href="'.url('/').'/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
                         </div>';
                       return $btn;
                     })
                     ->addColumn('Photo_Profile', function($row){
-                      $btn = '<a href="/'.$row->Upload_Foto.'" target="_blank">
-                      <img style="min-width: 150px !important;  min-height: 150px !important;border-radius: 0% !important;}" src="'.$row->Upload_Foto.'" class="img-thumbnail" >
+                      $btn = '<a href="'.url('/').$row->Upload_Foto.'" target="_blank">
+                      <img style="min-width: 150px !important;  min-height: 150px !important;border-radius: 0% !important;}" src="'.url('/').$row->Upload_Foto.'" class="img-thumbnail" >
                       </a>';
                       return $btn;
                     })
                     ->addColumn('IMG_KTP', function($row){
                       $btn = '
-                      <a href="/'.$row->Upload_KTP.'" target="_blank">
-                      <img style="min-width: 150px !important;  min-height: 150px !important;border-radius: 0% !important;}" src="'.$row->Upload_KTP.'" class="img-thumbnail" >
+                      <a href="'.url('/').$row->Upload_KTP.'" target="_blank">
+                      <img style="min-width: 150px !important;  min-height: 150px !important;border-radius: 0% !important;}" src="'.url('/').$row->Upload_KTP.'" class="img-thumbnail" >
                       </a>';
                       return $btn;
                     })
@@ -123,10 +123,10 @@ class UserController extends Controller
                     ->addColumn('action', function($row){
                       $btn = '
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a class="btn btn-success" href="/cetak?id='.$row->id.'">Cetak</a>
-                            <a class="btn btn-success" href="/resume?id='.$row->id.'">Lihat Data</a>
-                            <a class="btn btn-success" href="/edit?id='.$row->id.'">Edit</a>
-                            <a class="btn btn-danger" href="/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
+                            <a class="btn btn-success" href="'.url('/').'/cetak?id='.$row->id.'">Cetak</a>
+                            <a class="btn btn-success" href="'.url('/').'/resume?id='.$row->id.'">Lihat Data</a>
+                            <a class="btn btn-success" href="'.url('/').'/edit?id='.$row->id.'">Edit</a>
+                            <a class="btn btn-danger" href="'.url('/').'/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
                         </div>';
                       return $btn;
                     })
@@ -153,23 +153,23 @@ class UserController extends Controller
                     ->addColumn('action', function($row){
                       $btn = '
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a class="btn btn-success" href="/cetak?id='.$row->id.'">Cetak</a>
-                            <a class="btn btn-success" href="/resume?id='.$row->id.'">Lihat Data</a>
-                            <a class="btn btn-success" href="/edit?&id='.$row->id.'">Ubah Data</a>
-                            <a class="btn btn-danger" href="/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
+                            <a class="btn btn-success" href="'.url('/').'/cetak?id='.$row->id.'">Cetak</a>
+                            <a class="btn btn-success" href="'.url('/').'/resume?id='.$row->id.'">Lihat Data</a>
+                            <a class="btn btn-success" href="'.url('/').'/edit?&id='.$row->id.'">Ubah Data</a>
+                            <a class="btn btn-danger" href="'.url('/').'/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
                         </div>';
                       return $btn;
                     })
                     ->addColumn('Photo_Profile', function($row){
-                      $btn = '<a href="/'.$row->Upload_Foto.'" target="_blank">
-                      <img style="min-width: 150px !important;  min-height: 150px !important;border-radius: 0% !important;}" src="'.$row->Upload_Foto.'" class="img-thumbnail" >
+                      $btn = '<a href="'.url('/').$row->Upload_Foto.'" target="_blank">
+                      <img style="min-width: 150px !important;  min-height: 150px !important;border-radius: 0% !important;}" src="'.url('/').$row->Upload_Foto.'" class="img-thumbnail" >
                       </a>';
                       return $btn;
                     })
                     ->addColumn('IMG_KTP', function($row){
                       $btn = '
-                      <a href="/'.$row->Upload_KTP.'" target="_blank">
-                      <img style="min-width: 150px !important;  min-height: 150px !important;border-radius: 0% !important;}" src="'.$row->Upload_KTP.'" class="img-thumbnail" >
+                      <a href="'.url('/').$row->Upload_KTP.'" target="_blank">
+                      <img style="min-width: 150px !important;  min-height: 150px !important;border-radius: 0% !important;}" src="'.url('/').$row->Upload_KTP.'" class="img-thumbnail" >
                       </a>';
                       return $btn;
                     })

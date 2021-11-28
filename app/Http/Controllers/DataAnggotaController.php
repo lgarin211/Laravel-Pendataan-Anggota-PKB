@@ -67,31 +67,28 @@ class DataAnggotaController extends Controller
     }
     public function pasfile(Request $request)
     {
-        // dd($_POST);
+
         if (($request->req!='Upload_KTP') and ($request->req!='Upload_Foto')) {
-        // dd('efe1');
+        // dd($request);
         $file = $request->file($request->req);
-        $tujuan_upload = 'doc/'.$request->folder.'/';
+        $tujuan_upload = 'public/doc/'.$request->folder.'/';
         $upname=strtotime("now").$file->getClientOriginalName();
-        $binval='doc/'.$request->folder.'/'.$upname;
-        $file->move($tujuan_upload,$upname);
+        $binval='public/doc/'.$request->folder.'/'.$upname;
+        // dd($binval);
+        $nas=$file->move($tujuan_upload,$upname);
+        // dd($nas);
         }else{
-        // dd('efe3');
         $file = $request->file($request->req);
-        $tujuan_upload = 'doc/'.$request->folder.'/';
+        $tujuan_upload = 'public/doc/'.$request->folder.'/';
         $upname=strtotime("now").$file->getClientOriginalName();
-        $Upload_Foto='doc/'.$request->folder.'/'.$upname;
-        // dd(public_path($Upload_Foto,$tujuan_upload),('public/'.$upname),$request->file('Upload_Foto'));
+        $Upload_Foto='public/doc/'.$request->folder.'/'.$upname;
         $Upload_thumFoto='/doc/'.$request->reqi.'/thum'.$upname;
         $filePath = public_path($Upload_thumFoto);
         $img = Image::make($file->path());
         $img->resize(340,226);
-        // $file->move($tujuan_upload,$upname);
         $img->save($filePath,100);
         $binval=$Upload_thumFoto;
-        // dd($Upload_thumFoto);
         }
-        // dd($request->req);
         DB::table('data_anggotas')
               ->where('id', $request->id)
               ->update([$request->req=>$binval]);
@@ -126,9 +123,9 @@ class DataAnggotaController extends Controller
         $idauth=$id;
         if ($request->file('Upload_Foto')) {
         $file = $request->file('Upload_Foto');
-        $tujuan_upload = 'doc/PP/'.$idauth.'/';
+        $tujuan_upload = 'public/doc/PP/'.$idauth.'/';
         $upname=strtotime("now").$file->getClientOriginalName();
-        $Upload_Foto='doc/PP/'.$idauth.'/'.$upname;
+        $Upload_Foto='public/doc/PP/'.$idauth.'/'.$upname;
         // dd(public_path($Upload_Foto,$tujuan_upload),('public/'.$upname),$request->file('Upload_Foto'));
         $Upload_thumFoto='/doc/PP/thum'.$upname;
         $filePath = public_path($Upload_thumFoto);
@@ -137,43 +134,43 @@ class DataAnggotaController extends Controller
         // $file->move($tujuan_upload,$upname);
         $img->save($filePath,100);
         }else{
-            $Upload_thumFoto='null';
+            $Upload_thumFoto='/public/null';
         }
 
-        if(!empty($request->file('Upload_Foto'))) {
+        if(!empty($request->file('Upload_KTP'))) {
         $file = $request->file('Upload_KTP');
-        $tujuan_upload = 'doc/KTP/'.$idauth.'/';
+        $tujuan_upload = 'public/doc/KTP';
         $upname=strtotime("now").$file->getClientOriginalName();
-        $Upload_KTP='doc/KTP/'.$idauth.'/';
-        $Upload_thumKTP='/doc/KTP/'.$idauth.'/thum'.$upname;
+        // $Upload_KTP='public/doc/KTP';
+        $Upload_thumKTP='/doc/KTP/thum'.$upname;
         $filePath = public_path($Upload_thumKTP);
         $img = Image::make($file->path());
         $img->resize(340,226);
-        $file->move($tujuan_upload,$upname);
+        // $file->move($tujuan_upload,$upname);
         $img->save($filePath,100);
         }else{
-            $Upload_thumKTP='null';
+            $Upload_thumKTP='/public/null';
         }
 
         if (!empty($request->file('KK'))) {
         $file = $request->file('KK');
-        $tujuan_upload = 'doc/SPT/'.$idauth.'/';
+        $tujuan_upload = 'public/doc/SPT/';
         $upname=strtotime("now").$file->getClientOriginalName();
-        $KK='doc/SPT/'.$idauth.'/'.$upname;
+        $KK='public/doc/SPT/'.$upname;
         $file->move($tujuan_upload,$upname);
-
         }else{
-            $KK='null';
+            $KK='/public/null';
         }
+
         if (!empty($request->file('Upload_Surat_Pernyataan'))) {
 
         $file = $request->file('Upload_Surat_Pernyataan');
-        $tujuan_upload = 'doc/SPT/'.$idauth.'/';
+        $tujuan_upload = 'public/doc/SPT/';
         $upname=strtotime("now").$file->getClientOriginalName();
-        $Upload_Surat_Pernyataan='doc/SPT/'.$idauth.'/'.$upname;
+        $Upload_Surat_Pernyataan='public/doc/SPT/'.$upname;
         $file->move($tujuan_upload,$upname);
         }else{
-            $Upload_Surat_Pernyataan='null';
+            $Upload_Surat_Pernyataan='/public/null';
         }
 
 
@@ -182,12 +179,12 @@ class DataAnggotaController extends Controller
 
         if (!empty($request->file('filelainnya'))) {
         $file = $request->file('filelainnya');
-        $tujuan_upload = 'doc/OTL/'.$idauth.'/';
+        $tujuan_upload = 'public/doc/OTL/';
         $upname=strtotime("now").$file->getClientOriginalName();
-        $filelainnya='doc/OTL/'.$idauth.'/'.$upname;
+        $filelainnya='public/doc/OTL/'.$upname;
         $file->move($tujuan_upload,$upname);
         }else{
-            $filelainnya='null';
+            $filelainnya='/public/null';
         }
 
         $data=[
@@ -324,23 +321,23 @@ class DataAnggotaController extends Controller
                     ->addColumn('action', function($row){
                       $btn = '
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a class="btn btn-success" href="/cetak?id='.$row->id.'">Cetak</a>
-                            <a class="btn btn-success" href="/resume?id='.$row->id.'">Lihat Data</a>
-                            <a class="btn btn-success" href="/edit?id='.$row->id.'">Udah Data</a>
-                            <a class="btn btn-danger" href="/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
+                            <a class="btn btn-success" href="'.url('/').'/cetak?id='.$row->id.'">Cetak</a>
+                            <a class="btn btn-success" href="'.url('/').'/resume?id='.$row->id.'">Lihat Data</a>
+                            <a class="btn btn-success" href="'.url('/').'/edit?id='.$row->id.'">Udah Data</a>
+                            <a class="btn btn-danger" href="'.url('/').'/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
                         </div>';
                       return $btn;
                     })
                     ->addColumn('Photo_Profile', function($row){
-                      $btn = '<a href="/'.$row->Upload_Foto.'" target="_blank">
-                      <img style="width: 150px !important;  height: 150px !important;border-radius: 0% !important;}" src="'.$row->Upload_Foto.'" class="img-thumbnail" >
+                      $btn = '<a href="'.url('/').$row->Upload_Foto.'" target="_blank">
+                      <img style="width: 120px !important;  height: 150px !important;border-radius: 0% !important;}" src="'.url('/').$row->Upload_Foto.'" class="img-thumbnail" >
                       </a>';
                       return $btn;
                     })
                     ->addColumn('IMG_KTP', function($row){
                       $btn = '
-                      <a href="/'.$row->Upload_KTP.'" target="_blank">
-                      <img style="    width: 150px !important;  height: 150px !important;border-radius: 0% !important;}" src="'.$row->Upload_KTP.'" class="img-thumbnail" >
+                      <a href="'.url('/').$row->Upload_KTP.'" target="_blank">
+                      <img style="    width: 150px !important;  height: 150px !important;border-radius: 0% !important;}" src="'.url('/').$row->Upload_KTP.'" class="img-thumbnail" >
                       </a>';
                       return $btn;
                     })
@@ -376,23 +373,23 @@ class DataAnggotaController extends Controller
                     ->addColumn('action', function($row){
                       $btn = '
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a class="btn btn-success" href="/cetak?id='.$row->id.'">Cetak</a>
-                            <a class="btn btn-success" href="/resume?id='.$row->id.'">Lihat Data</a>
-                            <a class="btn btn-success" href="/edit?&id='.$row->id.'">Ubah Data</a>
-                            <a class="btn btn-danger" href="/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
+                            <a class="btn btn-success" href="'.url('/').'/cetak?id='.$row->id.'">Cetak</a>
+                            <a class="btn btn-success" href="'.url('/').'/resume?id='.$row->id.'">Lihat Data</a>
+                            <a class="btn btn-success" href="'.url('/').'/edit?&id='.$row->id.'">Ubah Data</a>
+                            <a class="btn btn-danger" href="'.url('/').'/Hapus?table=data_anggotas&id='.$row->id.'">Hapus Data</a>
                         </div>';
                       return $btn;
                     })
                     ->addColumn('Photo_Profile', function($row){
-                      $btn = '<a href="/'.$row->Upload_Foto.'" target="_blank">
-                      <img style="width: 150px !important;  height: 150px !important;border-radius: 0% !important;}" src="'.$row->Upload_Foto.'" class="img-thumbnail" >
+                      $btn = '<a href="'.url('/').$row->Upload_Foto.'" target="_blank">
+                      <img style="width: 120px !important;  height: 150px !important;border-radius: 0% !important;}" src="'.url('/').$row->Upload_Foto.'" class="img-thumbnail" >
                       </a>';
                       return $btn;
                     })
                     ->addColumn('IMG_KTP', function($row){
                       $btn = '
-                      <a href="/'.$row->Upload_KTP.'" target="_blank">
-                      <img style="    width: 150px !important;  height: 150px !important;border-radius: 0% !important;}" src="'.$row->Upload_KTP.'" class="img-thumbnail" >
+                      <a href="'.url('/').$row->Upload_KTP.'" target="_blank">
+                      <img style="    width: 150px !important;  height: 150px !important;border-radius: 0% !important;}" src="'.url('/').$row->Upload_KTP.'" class="img-thumbnail" >
                       </a>';
                       return $btn;
                     })

@@ -245,8 +245,8 @@
                 <p><textarea class='form-control col-md-12'  name="Alamat">@if(!empty($data->NIK)){{$data->Alamat}}@endif</textarea></p>
               </div>
               <div class="col-md-12">
-                <h6>Email</h6>
-                <p><input class="form-control" placeholder="expel@exm.com"  name="email" type="email" @if(!empty($data->email)) value="{{$data->email}}" @endif></p>
+{{--                 <h6>Email</h6>
+                <p><input class="form-control" placeholder="expel@exm.com"  name="email" type="email" @if(!empty($data->email)) value="{{$data->email}}" @endif></p> --}}
                 <h6>Nomor Handphone</h6>
                 <p><input class="form-control" placeholder="08xxxxxxxx"  name="No_Hape" type="number" @if(!empty($data->No_Hape)) value="{{$data->No_Hape}}" @endif></p>
               </div>
@@ -266,7 +266,7 @@
           <h4>Data Pemilihan Sipil</h4>
           <div class="col-md-12 mt-4">
               <h6>Masukan Daerah pemilihan</h6>
-                 <form method="POST" action="/Dapilset"> 
+                 <form method="POST" action="{{url('/')}}/Dapilset"> 
                  @csrf
                  <input type="hidden" name="user_id" value="{{$data->user_id}}">
                  <input type="hidden" name="no_keanggotaan" value="{{$data->no_keanggotaan}}">
@@ -439,8 +439,8 @@
     </script>
      {{-- Modal --}}
                     <!-- Modal -->
-                    <form action="/pasfile" method="POST" enctype="multipart/form-data">
-                      <input type="hidden" name="folder" value="KTP/{{$data->user_id}}">
+                    <form action="{{url('/')}}/pasfile" method="POST" enctype="multipart/form-data">
+                      <input type="hidden" name="folder" value="KTP">
                       <input type="hidden" name="id" value="{{$data->id}}">
                       <input type="hidden" name="req" value="Upload_KTP">
                       <input type="hidden" name="reqi" value="KTP">
@@ -475,8 +475,8 @@
                       </div>
                     </form>
                     <!-- Modal -->
-                    <form action="/pasfile" method="POST" enctype="multipart/form-data">
-                      <input type="hidden" name="folder" value="SPT/{{$data->user_id}}">
+                    <form action="{{url('/')}}/pasfile" method="POST" enctype="multipart/form-data">
+                      <input type="hidden" name="folder" value="SPT">
                       <input type="hidden" name="id" value="{{$data->id}}">
                       @csrf
                       <input type="hidden" name="req" value="Upload_Surat_Pernyataan">
@@ -510,8 +510,8 @@
                       </div>
                     </form>
                     <!-- Modal -->
-                    <form action="/pasfile" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="folder" value="OTL/{{$data->user_id}}">
+                    <form action="{{url('/')}}/pasfile" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="folder" value="OTL">
                       <input type="hidden" name="id" value="{{$data->id}}">
                       @csrf
                       <input type="hidden" name="req" value="filelainnya">
@@ -545,8 +545,8 @@
                     </form>
 
                                         <!-- Modal -->
-                    <form action="/pasfile" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="folder" value="SPT/{{$data->user_id}}">
+                    <form action="{{url('/')}}/pasfile" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="folder" value="SPT">
                       <input type="hidden" name="id" value="{{$data->id}}">
                       @csrf
                       <input type="hidden" name="req" value="KK">
@@ -580,8 +580,8 @@
                     </form>
 
                                                             <!-- Modal -->
-                    <form action="/pasfile" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="folder" value="PP/{{$data->user_id}}">
+                    <form action="{{url('/')}}/pasfile" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="folder" value="PP">
                       <input type="hidden" name="id" value="{{$data->id}}">
                       @csrf
                       <input type="hidden" name="req" value="Upload_Foto">

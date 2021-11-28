@@ -8,7 +8,7 @@
         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
       </div>
       <div class="modal-body">
-        <form id="regForm" action="/kelengkapandata?poinadmin=adduser" method="POST" enctype="multipart/form-data">
+        <form id="regForm" action="{{url('/')}}/kelengkapandata?poinadmin=adduser" method="POST" enctype="multipart/form-data">
       @csrf
       <input type="hidden" name="poinadmin" value="adminadd">
       <center>

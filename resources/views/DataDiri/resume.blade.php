@@ -145,12 +145,12 @@
                     <td class="isi">{{$data->Alamat}}</td>
                     <td class="isi"></td>
                   </tr>
-                   <tr>
+{{--                    <tr>
                     <td class="judul">Email</td>
                     <td>  :  </td>
                     <td class="isi">{{$data->email}}</td>
                     <td class="isi"></td>
-                  </tr>
+                  </tr> --}}
                   <tr>
                     <td class="judul">Nomor Handphone</td>
                     <td>  :  </td>
@@ -212,7 +212,7 @@
                     <td class="row">
                       <div class="col-md-3">Print Data  </div>
                       <div class="col-md-9">
-                        <a class="btn btn-primary" href="/presume?id={{$_GET['id']}}" target="_blank"  style="margin-left: 200px;">
+                        <a class="btn btn-primary" href="{{url('/')}}/presume?id={{$_GET['id']}}" target="_blank"  style="margin-left: 200px;">
                         Print
                       </a>
                     </div>
@@ -228,7 +228,7 @@
                         <div class="modal-dialog modal-xl">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h6 class="modal-title" id="ModalKTPLabel">File Surat Pernyataan</h6>
+                              <h6 class="modal-title" id="ModalKTPLabel">File KTP</h6>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">

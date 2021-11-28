@@ -166,12 +166,12 @@
                     <td class="isi">{{$data->Alamat}}</td>
                     <td class="isi"></td>
                   </tr>
-                   <tr>
+{{--                    <tr>
                     <td class="judul">Email</td>
                     <td>  :  </td>
                     <td class="isi">{{$data->email}}</td>
                     <td class="isi"></td>
-                  </tr>
+                  </tr> --}}
                   <tr>
                     <td class="judul">Nomor Handphone</td>
                     <td>  :  </td>

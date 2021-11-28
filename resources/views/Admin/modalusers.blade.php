@@ -7,7 +7,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="/adduser" method="POST">
+        <form action="{{url('/')}}/adduser" method="POST">
       	@csrf
 		<input type="hidden" name="poinadmin" value="adminadd">
 		<div class="container">

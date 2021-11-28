@@ -33,7 +33,7 @@
       </div>
       <div class="modal-body">
 <section class="text-left" id="multiple-column-form">
-    <form action="/kelengkapandata" method="POST" enctype="multipart/form-data">
+    <form action="{{url('/')}}/kelengkapandata" method="POST" enctype="multipart/form-data">
     	@csrf
         <div class="row match-height">
             <div class="col-12">

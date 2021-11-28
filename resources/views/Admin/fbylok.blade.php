@@ -23,7 +23,7 @@
 <section class="section"> 
 <div class="row">
   <div class="col-md-2 card">
-     <form method="GET" action="/Fbylok"> 
+     <form method="GET" action="{{url('/')}}/Fbylok"> 
      <input type="hidden" name="data" value="true">
      <div class="tab mr-1 ml-1">
        <h6>Provinsi</h6>

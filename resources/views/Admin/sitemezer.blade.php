@@ -3,7 +3,7 @@
           <div class="sidebar-header">
             <div class="d-flex justify-content-between">
               <div class="logo">
-                <a href="/">
+                <a href="{{url('/')}}">
                   <img src="{{url('/')}}/PKB/LOGOPKB.png" alt="Logo" style="min-width: 200px; min-height: 200px;" srcset="">
                 </a>
               </div>
@@ -18,7 +18,7 @@
             <ul class="menu">
               <li class="sidebar-title">Menu</li>
               <li class="sidebar-item  ">
-                <a href="/" class='sidebar-link'>
+                <a href="{{url('/')}}" class='sidebar-link'>
                   <i class="bi bi-grid-fill"></i>
                   <span>Dashboard</span>
                 </a>
@@ -48,7 +48,7 @@
 
               @endif
                <li class="sidebar-item  ">
-                  <form action="/logout" method="POST" class="dropdown-item">
+                  <form action="{{url('/')}}/logout" method="POST" class="dropdown-item">
                     @csrf
                     <button type="submit" class="btn btn-dangger">
                           <i class="bi bi-power"></i> Signout                    

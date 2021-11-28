@@ -1,4 +1,4 @@
-     <form id="regForm" action="/kelengkapandata/simpan" method="POST" enctype="multipart/form-data">
+     <form id="regForm" action="{{url('/')}}/kelengkapandata/simpan" method="POST" enctype="multipart/form-data">
       @csrf
       <center>
        <img src="https://upload.wikimedia.org/wikipedia/id/thumb/1/11/Logo_PKB.svg/1200px-Logo_PKB.svg.png" class="text-center card-img-top mb-2" style="width:60px;height: 80px;">
@@ -29,11 +29,11 @@
       <div class="tab">
        <h6>Nama Lengkap</h6>
        <p>
-        <input placeholder="Nama..." oninput="this.className = ''" name="nama" @if(!empty($data->nama)) value="{{$data->nama}}" @endif>
+        <input placeholder="Nama..." name="nama" @if(!empty($data->nama)) value="{{$data->nama}}" @endif>
        </p>
        <h6>NIK</h6>
        <p>
-        <input placeholder="3271..." oninput="this.className = ''" name="NIK" @if(!empty($data->NIK)) value="{{$data->NIK}}" @endif>
+        <input placeholder="3271..." name="NIK" @if(!empty($data->NIK)) value="{{$data->NIK}}" @endif>
        </p>
        <h6>Jenis Kelamin</h6>
        <p>
@@ -145,59 +145,59 @@
         <div class="col-md-6">
          <h6>RT</h6>
          <p>
-          <input placeholder="001 " oninput="this.className = ''" name="RT" @if(!empty($data->RT)) value="{{$data->RT}}" @endif>
+          <input placeholder="001 " name="RT" @if(!empty($data->RT)) value="{{$data->RT}}" @endif>
          </p>
         </div>
         <div class="col-md-6">
          <h6>RW</h6>
          <p>
-          <input placeholder="001" oninput="this.className = ''" name="RW" @if(!empty($data->RW)) value="{{$data->RW}}" @endif>
+          <input placeholder="001" name="RW" @if(!empty($data->RW)) value="{{$data->RW}}" @endif>
          </p>
         </div>
        </div>
        <h6>Alamat Lengkap</h6>
        <p>
-        <textarea class='form-control col-md-12' oninput="this.className = ''" name="Alamat">@if(!empty($data->NIK)){{$data->Alamat}}@endif</textarea>
+        <textarea class='form-control col-md-12' name="Alamat">@if(!empty($data->NIK)){{$data->Alamat}}@endif</textarea>
        </p>
       </div>
       <div class="tab">
        <h6>Email</h6>
        <p>
-        <input placeholder="expel@exm.com" oninput="this.className = ''" name="email" type="email"
+        <input placeholder="expel@exm.com" name="email" type="email"
         @if(!empty($data->email)) value="{{$data->email}}" @endif>
        </p>
        <h6>Nomor Handphone</h6>
        <p>
-        <input placeholder="08xxxxxxxx" oninput="this.className = ''" name="No_Hape" type="number"
+        <input placeholder="08xxxxxxxx" name="No_Hape" type="number"
         @if(!empty($data->No_Hape)) value="{{$data->No_Hape}}" @endif>
        </p>
       </div>
       <div class="tab">
        <h6>Rekomendasi</h6>
        <p>
-        <input placeholder="Favourite car" oninput="this.className = ''" name="Rekomendasi"
+        <input placeholder="Favourite car" name="Rekomendasi"
         @if(!empty($data->Rekomendasi)) value="{{$data->Rekomendasi}}" @endif>
        </p>
       </div>
       <div class="tab">
        <h6>Pilih Photo Profile</h6>
        <p>
-        {{-- <input placeholder="Favourite Song" oninput="this.className = ''" name="uname"> --}}
+        {{-- <input placeholder="Favourite Song" name="uname"> --}}
         <input id="pp-up" type="file" class="file" data-preview-file-type="text" name="Upload_Foto">
        </p>
        <h6>Pilih Photo KTP</h6>
        <p>
-        {{-- <input placeholder="Favourite Song" oninput="this.className = ''" name="uname"> --}}
+        {{-- <input placeholder="Favourite Song" name="uname"> --}}
         <input id="ktp-up" type="file" class="file" data-preview-file-type="text" name="Upload_KTP">
        </p>
        <h6>Pilih Photo Surat Pernyataan</h6>
        <p>
-        {{-- <input placeholder="Favourite Song" oninput="this.className = ''" name="uname"> --}}
+        {{-- <input placeholder="Favourite Song" name="uname"> --}}
         <input id="spt-up" type="file" class="file" data-preview-file-type="text" name="Upload_Surat_Pernyataan">
        </p>
        <h6>Pilih file Lainnya</h6>
        <p>
-        {{-- <input placeholder="Favourite Song" oninput="this.className = ''" name="uname"> --}}
+        {{-- <input placeholder="Favourite Song" name="uname"> --}}
         <input id="lny-up" type="file" class="file" data-preview-file-type="text" name="filelainnya">
        </p>
       </div>
