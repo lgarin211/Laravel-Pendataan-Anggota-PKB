@@ -77,14 +77,14 @@
         {{-- <td width="100">{{$item->Provinsi }}</td> --}}
         {{-- <td width="100">{{$item->Kabupaten }}</td> --}}
         {{-- <td width="100">{{$item->Kecamatan }}</td>  --}} 
-        <td width="10">`{{$item->RT }}</td> 
-        <td width="10">`{{$item->RW }}</td> 
-        <td width="20">`{{$item->Kelurahan }}</td>
-        <td width="20">`{{$item->No_Hape }}</td>
+        <td width="10">{{$item->RT }}</td> 
+        <td width="10">{{$item->RW }}</td> 
+        <td width="20">{{$item->Kelurahan }}</td>
+        <td width="20">{{$item->No_Hape }}</td>
         {{-- <td width="100">{{$item->Upload_Foto}}</td> --}}
         {{--<td width="100"><img src="{{public_path('/Template1/assets/images/faces/face1.jpg')}}"></td> --}}
         <td width="50"><img src="{{public_path($item->Upload_KTP)}}" style="width: 10px;width: 15px;"></td> 
-        <td width="20">`{{$item->Rekomendasi }}</td>
+        <td width="20">{{$item->Rekomendasi }}</td>
         {{-- <td width="100">{{$item->Upload_Surat_Pernyataan}}</td> --}}
         {{-- <td width="100">{{$item->filelainnya }}</td>  --}}
         {{-- <td width="100">{{$item->no_keanggotaan }}</td> --}}
