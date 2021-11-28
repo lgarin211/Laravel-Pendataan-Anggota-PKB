@@ -269,7 +269,7 @@
                                             <div class="card-content">
                                                 <div class="card-body">
                                                     <p class="card-text">Silahkan Masukan File Surat Pernyataan
-                                                        <code>Format PDF</code>-.
+                                                        <code>Format JPG,JPEG,PNG,PDF</code>-.
                                                     </p>
                                                     <!-- Auto resize image file uploader -->
                                                     <input type="file" class="imgSP" id="spt-up" name="Upload_Surat_Pernyataan">
