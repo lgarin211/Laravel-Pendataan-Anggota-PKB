@@ -204,9 +204,9 @@
                                     </div>
                                     <div class="col-md-2 col-12 mb-1">
                                         <div class="form-group">
-                                            <label for="jenis_kelamin">jenis_kelamin</label>
+                                            <label for="jenis_kelamin">Jenis Kelamin</label>
                                             <select name="jenis_kelamin" id="jenis_kelamin" class="form-select">
-                                                <option value=""></option>
+                                                <option value="">Pilih</option>
                                                 <option value="Laki-laki">Laki-laki</option>
                                                 <option value="Perempuan">Perempuan</option>
                                             </select>
